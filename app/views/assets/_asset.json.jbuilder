@@ -1,0 +1,2 @@
+json.extract! asset, :id, :code, :name, :model, :department_id, :user_id, :acquired_on, :disposed_on, :memo, :delete, :updated_at, :created_at, :created_at, :updated_at
+json.url asset_url(asset, format: :json)

@@ -1,0 +1,61 @@
+<%= form_for(@asset) do |f| %>
+  <% if @asset.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@asset.errors.count, "error") %> prohibited this asset from being saved:</h2>
+
+      <ul>
+      <% @asset.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :model %><br>
+    <%= f.text_field :model %>
+  </div>
+  <div class="field">
+    <%= f.label :department_id %><br>
+    <%= f.number_field :department_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :acquired_on %><br>
+    <%= f.date_select :acquired_on %>
+  </div>
+  <div class="field">
+    <%= f.label :disposed_on %><br>
+    <%= f.date_select :disposed_on %>
+  </div>
+  <div class="field">
+    <%= f.label :memo %><br>
+    <%= f.text_area :memo %>
+  </div>
+  <div class="field">
+    <%= f.label :delete %><br>
+    <%= f.check_box :delete %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br>
+    <%= f.datetime_select :updated_at %>
+  </div>
+  <div class="field">
+    <%= f.label :created_at %><br>
+    <%= f.datetime_select :created_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
