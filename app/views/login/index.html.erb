@@ -1,0 +1,15 @@
+<h1>資産管理システム</h1>
+<p style="color : Black"><%= @error %></p>
+<%= form_tag action: :auth do %>
+   <div class="field">
+      <%= label_tag :code, 'ユーザー' %>:<br />
+      <%= text_field_tag :code, '' %>
+   </div>
+   <div class="field">
+      <%= label_tag :password, 'パスワード' %>:<br />
+      <%= text_field_tag :password, '' %>
+   </div>
+
+   <%= hidden_field_tag :referer, flash[:referer] %>
+   <%= submit_tag 'ログイン' %>
+<% end %>

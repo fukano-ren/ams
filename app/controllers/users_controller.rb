@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :check_logined
+  before_action :auth
 
   # GET /users
   # GET /users.json
@@ -70,5 +72,12 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:code, :name, :password, :department_id, :system, :admin, :updated_at, :created_at)
+    end
+    def auth
+      name = 'fukano-ren'
+      passwd = 'Tamadou0526'
+      authenticate_or_request_with_http_basic('asm') do |n,p|
+        n == name && p == passwd
+      end
     end
 end
