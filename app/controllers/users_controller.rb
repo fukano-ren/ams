@@ -74,10 +74,10 @@ class UsersController < ApplicationController
       params.require(:user).permit(:code, :name, :password, :department_id, :system, :admin, :updated_at, :created_at)
     end
     def auth
-      name = 'fukano-ren'
+      code = 'fukano-ren'
       passwd = 'Tamadou0526'
-      authenticate_or_request_with_http_basic('asm') do |n,p|
-        n == name && p == passwd
+      authenticate_or_request_with_http_basic('Asm') do |c,p|
+        c == code && p == passwd
       end
     end
 end

@@ -8,9 +8,9 @@ class LoginController < ApplicationController
     if usr then
       reset_session
       session[:usr] = usr.id
-      session[:name] = usr.username
+      session[:name] = usr.name
     # redirect_to params[:referer]
-      redirect_to assets_url
+      redirect_to controller: 'menu', action: 'index'
     else
       flash.now[:referer] = params[:referer]
       @error = 'ユーザー/パスワードが間違っています。'

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  get 'login/index'
 
+
+
+  get 'menu/index'
+  get 'login/index'
+  get 'departments/index'
+  get 'assets/index'
+  get 'users/index'
   post 'login/auth'
 
   resources :assets
