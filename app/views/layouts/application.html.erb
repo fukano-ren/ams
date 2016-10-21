@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+  <div align=right>
+    <%= link_to "ログアウト" , controller: :login, action: :index %>
+  </div>
+<div align=center>
 <head>
   <title>Ams</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -11,4 +15,5 @@
 <%= yield %>
 
 </body>
+</div>
 </html>

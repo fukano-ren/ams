@@ -1,44 +1,57 @@
 <p id="notice"><%= notice %></p>
+<h1>ユーザー情報詳細</h1>
+<table border="1">
 
+<tr>
 <p>
-  <strong>Code:</strong>
-  <%= @user.code %>
+  <td><div align=right><strong>コード</strong></div></td>
+  <td><div align=left><%= @user.code %></div></td>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>Name:</strong>
-  <%= @user.name %>
+  <td><div align=right><strong>氏名</strong></div></td>
+  <td><div align=left><%= @user.name %></div></td>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>Password:</strong>
-  <%= @user.password %>
+  <td><div align=right><strong>パスワード:</strong></div></td>
+  <td><div align=left><%= @user.password %></div></td>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>Department:</strong>
-  <%= @user.department_id %>
+  <td><div align=right><strong>所属部署:</strong></div></td>
+  <td><div align=left><%= @user.department_id %></div></td>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>System:</strong>
-  <%= @user.system %>
+  <td><div align=right><strong>システム管理権限:</strong></div></td>
+  <td><div align=left><%= @user.system %></div></td>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
+  <td><div align=right><strong>資産管理権限:</strong></div></td>
+  <td><div align=left><%= @user.admin %></div></td>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>Updated at:</strong>
-  <%= @user.updated_at %>
+  <td><div align=right><strong>更新日時</strong></div></td>
+  <td><div align=left><%= @user.updated_at %></div></td>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>Created at:</strong>
-  <%= @user.created_at %>
+  <td><div align=right><strong>登録日時:</strong></div></td>
+  <td><div align=left><%= @user.created_at %></div></td>
 </p>
+</tr>
+</table>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to '変更する', edit_user_path(@user) %> 
+<%= link_to '一覧に戻る', users_path %>
+<%= link_to 'メニューに戻る', menu_index_path %>

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   get 'menu/index'
   get 'login/index'
   get 'departments/index'

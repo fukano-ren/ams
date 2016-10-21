@@ -11,39 +11,59 @@
     </div>
   <% end %>
 
+
+<table border="1">
+  <tr>
   <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
+    <td><%= f.label :code %><br></td>
+    <td><%= f.text_field :code %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <td><%= f.label :name %><br></td>
+    <td><%= f.text_field :name %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_field :password %>
+    <td><%= f.label :password %><br></td>
+    <td><%= f.text_field :password %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :department_id %><br>
-    <%= f.number_field :department_id %>
+    <td><%= f.label :department_id %><br></td>
+    <td><%= f.number_field :department_id %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :system %><br>
-    <%= f.check_box :system %>
+    <td><%= f.label :system %><br></td>
+    <td><%= f.check_box :system %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.check_box :admin %>
+    <td><%= f.label :admin %><br></td>
+    <td><%= f.check_box :admin %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :updated_at %><br>
-    <%= f.datetime_select :updated_at %>
+    <td><%= f.label :updated_at %><br></td>
+    <td><%= f.datetime_select :updated_at %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :created_at %><br>
-    <%= f.datetime_select :created_at %>
+    <td><%= f.label :created_at %><br></td>
+    <td><%= f.datetime_select :created_at %></td>
   </div>
+  </tr>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
