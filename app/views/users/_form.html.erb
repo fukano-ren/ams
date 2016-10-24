@@ -15,37 +15,37 @@
 <table border="1">
   <tr>
   <div class="field">
-    <td><%= f.label :code %><br></td>
+    <td><%= f.label :コード %><br></td>
     <td><%= f.text_field :code %></td>
   </div>
   </tr>
   <tr>
   <div class="field">
-    <td><%= f.label :name %><br></td>
+    <td><%= f.label :氏名 %><br></td>
     <td><%= f.text_field :name %></td>
   </div>
   </tr>
   <tr>
   <div class="field">
-    <td><%= f.label :password %><br></td>
+    <td><%= f.label :パスワード %><br></td>
     <td><%= f.text_field :password %></td>
   </div>
   </tr>
   <tr>
   <div class="field">
-    <td><%= f.label :department_id %><br></td>
+    <td><%= f.label :所属部署 %><br></td>
     <td><%= f.number_field :department_id %></td>
   </div>
   </tr>
   <tr>
   <div class="field">
-    <td><%= f.label :system %><br></td>
+    <td><%= f.label :システム管理権限 %><br></td>
     <td><%= f.check_box :system %></td>
   </div>
   </tr>
   <tr>
   <div class="field">
-    <td><%= f.label :admin %><br></td>
+    <td><%= f.label :資産管理権限 %><br></td>
     <td><%= f.check_box :admin %></td>
   </div>
   </tr>
@@ -61,9 +61,9 @@
     <td><%= f.datetime_select :created_at %></td>
   </div>
   </tr>
-
+</table>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :登録%>
   </div>
 
 <% end %>

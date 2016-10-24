@@ -11,50 +11,75 @@
     </div>
   <% end %>
 
+<table border="1">
+
+  <tr>
   <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
+    <td><%= f.label :code %><br></td>
+    <td><%= f.text_field :code %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <td><%= f.label :name %><br></td>
+    <td><%= f.text_field :name %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :model %><br>
-    <%= f.text_field :model %>
+    <td><%= f.label :model %><br></td>
+    <td><%= f.text_field :model %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :department_id %><br>
-    <%= f.number_field :department_id %>
+    <td><%= f.label :department_id %><br></td>
+    <td><%= f.number_field :department_id %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <td><%= f.label :user_id %><br></td>
+    <td><%= f.number_field :user_id %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :acquired_on %><br>
-    <%= f.date_select :acquired_on %>
+    <td><%= f.label :acquired_on %><br></td>
+    <td><%= f.date_select :acquired_on %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :disposed_on %><br>
-    <%= f.date_select :disposed_on %>
+    <td><%= f.label :disposed_on %><br></td>
+    <td><%= f.date_select :disposed_on %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :memo %><br>
-    <%= f.text_area :memo %>
+    <td><%= f.label :memo %><br></td>
+    <td><%= f.text_area :memo %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :delete %><br>
-    <%= f.check_box :delete %>
+    <td><%= f.label :delete %><br></td>
+    <td><%= f.check_box :delete_flg %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :updated_at %><br>
-    <%= f.datetime_select :updated_at %>
+    <td><%= f.label :updated_at %><br></td>
+    <td><%= f.datetime_select :updated_at %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :created_at %><br>
-    <%= f.datetime_select :created_at %>
+    <td><%= f.label :created_at %><br></td>
+    <td><%= f.datetime_select :created_at %></td>
   </div>
+  </tr>
+</table>
   <div class="actions">
     <%= f.submit %>
   </div>

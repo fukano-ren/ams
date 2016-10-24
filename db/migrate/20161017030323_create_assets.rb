@@ -9,7 +9,7 @@ class CreateAssets < ActiveRecord::Migration
       t.date :acquired_on
       t.date :disposed_on
       t.text :memo
-      t.boolean :delete
+      t.boolean :delete_flg
       t.datetime :updated_at
       t.datetime :created_at
 

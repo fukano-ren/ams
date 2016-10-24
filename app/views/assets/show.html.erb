@@ -1,59 +1,50 @@
 <p id="notice"><%= notice %></p>
-
+<h1>資産情報詳細</h1>
+<table border="1">
+<tr>
 <p>
-  <strong>Code:</strong>
-  <%= @asset.code %>
+  <td><strong>コード</strong>
+  <td><%= @asset.code %>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>Name:</strong>
-  <%= @asset.name %>
+  <td><strong>品名</strong>
+  <td><%= @asset.name %>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>Model:</strong>
-  <%= @asset.model %>
+  <td><strong>型番</strong>
+  <td><%= @asset.model %>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>Department:</strong>
-  <%= @asset.department_id %>
+  <td><strong>管理部署</strong>
+  <td><%= @asset.department_id %>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>User:</strong>
-  <%= @asset.user_id %>
+  <td><strong>使用者</strong>
+  <td><%= @asset.user_id %>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>Acquired on:</strong>
-  <%= @asset.acquired_on %>
+  <td><strong>取得日付</strong>
+  <td><%= @asset.acquired_on %>
 </p>
-
+</tr>
+<tr>
 <p>
-  <strong>Disposed on:</strong>
-  <%= @asset.disposed_on %>
+  <td><strong>備考</strong>
+  <td><%= @asset.memo %>
 </p>
+</tr>
+</table>
 
-<p>
-  <strong>Memo:</strong>
-  <%= @asset.memo %>
-</p>
-
-<p>
-  <strong>Delete:</strong>
-  <%= @asset.delete %>
-</p>
-
-<p>
-  <strong>Updated at:</strong>
-  <%= @asset.updated_at %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @asset.created_at %>
-</p>
-
-<%= link_to 'Edit', edit_asset_path(@asset) %> |
-<%= link_to 'Back', assets_path %>
+<%= link_to '変更する', edit_asset_path(@asset) %> |
+<%= link_to '一覧に戻る', assets_path %>
+<%= link_to 'メニューに戻る', menu_index_path %>

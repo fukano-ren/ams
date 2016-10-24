@@ -18,7 +18,7 @@ class AssetsControllerTest < ActionController::TestCase
 
   test "should create asset" do
     assert_difference('Asset.count') do
-      post :create, asset: { acquired_on: @asset.acquired_on, code: @asset.code, created_at: @asset.created_at, delete: @asset.delete, department_id: @asset.department_id, disposed_on: @asset.disposed_on, memo: @asset.memo, model: @asset.model, name: @asset.name, updated_at: @asset.updated_at, user_id: @asset.user_id }
+      post :create, asset: { acquired_on: @asset.acquired_on, code: @asset.code, created_at: @asset.created_at, delete_flg: @asset.delete_flg, department_id: @asset.department_id, disposed_on: @asset.disposed_on, memo: @asset.memo, model: @asset.model, name: @asset.name, updated_at: @asset.updated_at, user_id: @asset.user_id }
     end
 
     assert_redirected_to asset_path(assigns(:asset))
@@ -35,7 +35,7 @@ class AssetsControllerTest < ActionController::TestCase
   end
 
   test "should update asset" do
-    patch :update, id: @asset, asset: { acquired_on: @asset.acquired_on, code: @asset.code, created_at: @asset.created_at, delete: @asset.delete, department_id: @asset.department_id, disposed_on: @asset.disposed_on, memo: @asset.memo, model: @asset.model, name: @asset.name, updated_at: @asset.updated_at, user_id: @asset.user_id }
+    patch :update, id: @asset, asset: { acquired_on: @asset.acquired_on, code: @asset.code, created_at: @asset.created_at, delete_flg: @asset.delete_flg, department_id: @asset.department_id, disposed_on: @asset.disposed_on, memo: @asset.memo, model: @asset.model, name: @asset.name, updated_at: @asset.updated_at, user_id: @asset.user_id }
     assert_redirected_to asset_path(assigns(:asset))
   end
 

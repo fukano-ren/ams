@@ -2,21 +2,16 @@
 
 <h1>Listing Assets</h1>
 
-<table>
+<table border="1">
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Name</th>
-      <th>Model</th>
-      <th>Department</th>
-      <th>User</th>
-      <th>Acquired on</th>
-      <th>Disposed on</th>
-      <th>Memo</th>
-      <th>Delete</th>
-      <th>Updated at</th>
-      <th>Created at</th>
-      <th colspan="3"></th>
+      <th>コード</th>
+      <th>品名</th>
+      <th>型番</th>
+      <th>部署</th>
+      <th>使用者</th>
+      <th>取得日付</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -29,14 +24,10 @@
         <td><%= asset.department_id %></td>
         <td><%= asset.user_id %></td>
         <td><%= asset.acquired_on %></td>
-        <td><%= asset.disposed_on %></td>
-        <td><%= asset.memo %></td>
-        <td><%= asset.delete %></td>
-        <td><%= asset.updated_at %></td>
-        <td><%= asset.created_at %></td>
-        <td><%= link_to 'Show', asset %></td>
-        <td><%= link_to 'Edit', edit_asset_path(asset) %></td>
-        <td><%= link_to 'Destroy', asset, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'コピー',edit_asset_path(asset) %></td>
+        <td><%= link_to '詳細', asset %></td>
+        <td><%= link_to '変更', edit_asset_path(asset) %></td>
+        <td><%= link_to '削除', asset, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -44,4 +35,6 @@
 
 <br>
 
-<%= link_to 'New Asset', new_asset_path %>
+<%= link_to '新規資産登録', new_asset_path %>
+
+<%= link_to 'メニューに戻る', menu_index_path %>
