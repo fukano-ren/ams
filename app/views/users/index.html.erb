@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
-
+  <div align=right>
+    <%= link_to "ログアウト" , controller: :login, action: :index %>
+  </div>
 <h1>ユーザー情報一覧</h1>
+
+<%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
+  <%= text_field_tag "search[title]" %>
+  <%= submit_tag "検索" %>
+  <%= link_to "リセット", users_index_path %>
+<% end %>
+
+
+<%= session[:usr] %>
 
 <table border="1">
   <thead>

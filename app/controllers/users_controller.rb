@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :edit_password]
   skip_before_action :check_logined
   before_action :auth
 
@@ -21,6 +21,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def edit_password
   end
 
   # POST /users
@@ -53,6 +56,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_password
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
@@ -63,6 +80,12 @@ class UsersController < ApplicationController
     end
   end
 
+ 
+
+ def search 
+   @users_k = Users.where(title: params[]["name"]) 
+   render :index
+ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

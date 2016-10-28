@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
-
+  
+  
+  get 'passchen/index'
   get 'menu/index'
   get 'login/index'
   get 'departments/index'
   get 'assets/index'
   get 'users/index'
   post 'login/auth'
-
   resources :assets
-  resources :users
+  resources :users do
+    get 'search', on: :collection
+    get 'edit_password', on: :member
+    patch 'update_password', on: :member
+  end
   resources :departments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
