@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :edit_password]
-  skip_before_action :check_logined
-  before_action :auth
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :edit_password, :update_password]
+
 
   # GET /users
   # GET /users.json
@@ -33,7 +32,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: '新しく登録しました' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -47,7 +46,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: '登録内容を更新しました' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -59,10 +58,10 @@ class UsersController < ApplicationController
   def update_password
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to "/menu/index", notice: 'パスワードを変更しました' }
         format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
+      else 
+        format.html { render :edit_password ,notice: '入力にミスがあります'}
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -75,7 +74,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: '削除しました' }
       format.json { head :no_content }
     end
   end
@@ -94,7 +93,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:code, :name, :password, :department_id, :system, :admin, :updated_at, :created_at)
+      params.require(:user).permit(:code, :name, :password, :department_id, :system, :admin, :updated_at, :created_at, :password_confirmation)
     end
     def auth
       code = 'fukano-ren'

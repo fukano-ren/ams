@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
   has_many :assets
+
+  validates_confirmation_of :password
+  attr_accessor             :password_confirmation
+
   def self.authenticate(code, password)
     usr = find_by(code: code)
     if usr != nil && usr.password == password then
