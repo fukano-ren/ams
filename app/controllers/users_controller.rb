@@ -56,17 +56,21 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to "/menu/index", notice: 'パスワードを変更しました' }
-        format.json { render :show, status: :ok, location: @user }
-      else 
-        format.html { render :edit_password ,notice: '入力にミスがあります'}
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    if @user.password == params["gen_password"]
+      respond_to do |format|
+        if @user.update(user_params)
+          format.html { redirect_to "/menu/index", notice: 'パスワードを変更しました' }
+          format.json { render :show, status: :ok, location: @user }
+        else 
+          format.html { render :edit_password ,notice: '入力にミスがあります'}
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
-    end
+   else
+     @user.errors.add(:base,"入力にミスがあります")
+     render :edit_password
+   end
   end
-
 
 
   # DELETE /users/1
@@ -80,11 +84,12 @@ class UsersController < ApplicationController
   end
 
  
-
  def search 
-   @users_k = Users.where(title: params[]["name"]) 
+   @users_k = Users.where(code: params[]["name"]) 
    render :index
  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
