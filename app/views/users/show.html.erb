@@ -1,59 +1,66 @@
-  <div align=right>
-    <%= link_to "ログアウト" , controller: :login, action: :index %>
-  </div>
+<div align=right>
+  <%= link_to "ログアウト" , controller: :login, action: :index %>
+</div>
 
 <p id="notice"><%= notice %></p>
-<h1>ユーザー情報詳細</h1>
-<table border="1">
 
-<tr>
-<p>
-  <td><div align=right><strong>コード</strong></div></td>
-  <td><div align=left><%= @user.code %></div></td>
-</p>
-</tr>
-<tr>
-<p>
-  <td><div align=right><strong>氏名</strong></div></td>
-  <td><div align=left><%= @user.name %></div></td>
-</p>
-</tr>
-<tr>
-<p>
-  <td><div align=right><strong>パスワード:</strong></div></td>
-  <td><div align=left><%= @user.password %></div></td>
-</p>
-</tr>
-<tr>
-<p>
-  <td><div align=right><strong>所属部署:</strong></div></td>
-  <td><div align=left><%= @user.department_id %></div></td>
-</p>
-</tr>
-<tr>
-<p>
-  <td><div align=right><strong>システム管理権限:</strong></div></td>
-  <td><div align=left><%= @user.system %></div></td>
-</p>
-</tr>
-<tr>
-<p>
-  <td><div align=right><strong>資産管理権限:</strong></div></td>
-  <td><div align=left><%= @user.admin %></div></td>
-</p>
-</tr>
-<tr>
-<p>
-  <td><div align=right><strong>更新日時</strong></div></td>
-  <td><div align=left><%= @user.updated_at %></div></td>
-</p>
-</tr>
-<tr>
-<p>
-  <td><div align=right><strong>登録日時:</strong></div></td>
-  <td><div align=left><%= @user.created_at %></div></td>
-</p>
-</tr>
+<h1>ユーザー情報詳細</h1>
+
+<table border="1">
+  <tr>
+    <p>
+      <td><div align=right><strong>コード</strong></div></td>
+      <td><div align=left><%= @user.code %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td><div align=right><strong>氏名</strong></div></td>
+      <td><div align=left><%= @user.name %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <% if session[:system] == true %>
+      <p>
+        <td><div align=right><strong>パスワード:</strong></div></td>
+        <td><div align=left><%= @user.password %></div></td>
+      </p>
+    <% else %>
+      <p>
+        <td><div align=right><strong>パスワード:</strong></div></td>
+        <td><div align=left><%= @user.password %></div></td>
+      </p>
+  </tr>
+  <tr>
+    <p>
+      <td><div align=right><strong>所属部署:</strong></div></td>
+      <td><div align=left><%= @user.department_id %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td><div align=right><strong>システム管理権限:</strong></div></td>
+      <td><div align=left><%= @user.system %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td><div align=right><strong>資産管理権限:</strong></div></td>
+      <td><div align=left><%= @user.admin %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td><div align=right><strong>更新日時</strong></div></td>
+      <td><div align=left><%= @user.updated_at %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td><div align=right><strong>登録日時:</strong></div></td>
+      <td><div align=left><%= @user.created_at %></div></td>
+    </p>
+  </tr>
 </table>
 
 <%= link_to '変更する', edit_user_path(@user) %> 

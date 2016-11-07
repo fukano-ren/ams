@@ -1,11 +1,10 @@
-  <div align=right>
-    <%= link_to "ログアウト" , controller: :login, action: :index %>
-  </div>
+<div align=right>
+  <%= link_to "ログアウト" , controller: :login, action: :index %>
+</div>
 
 <h1>ユーザー情報変更</h1>
 
 <%= render 'form' %>
-
 
 <%= link_to 'キャンセル', users_path %>
 <%= link_to 'メニューに戻る', menu_index_path %>

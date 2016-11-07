@@ -1,3 +1,4 @@
+<% if session[:system] == true %>
 <p id="notice"><%= notice %></p>
   <div align=right>
     <%= link_to "ログアウト" , controller: :login, action: :index %>
@@ -18,6 +19,7 @@
       <th>部署</th>
       <th>システム管理</th>
       <th>資産管理</th>
+      
       <th colspan="3">アクション</th>
     </tr>
   </thead>
@@ -28,8 +30,20 @@
         <td><%= user.code %></td>
         <td><%= user.name %></td>
         <td><%= user.department_id %></td>
-        <td><%= user.system %></td>
-        <td><%= user.admin %></td>
+        <td>
+          <% if user.system == true %>
+            ○
+          <% else %>
+            ×
+          <% end %>
+        </td>
+        <td>
+          <% if user.admin == true %>
+            ○
+          <% else %>
+            ×
+          <% end %>
+        </td>
         <td><%= link_to '詳細', user %></td>
         <td><%= link_to '変更', edit_user_path(user) %></td>
         <td><%= link_to '削除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,5 +55,58 @@
 <br>
 
 <%= link_to '新規ユーザー登録', new_user_path %>
+<%= link_to 'メニューに戻る', menu_index_path %>
+
+<% else %>
+
+<p id="notice"><%= notice %></p>
+  <div align=right>
+    <%= link_to "ログアウト" , controller: :login, action: :index %>
+  </div>
+<h1>ユーザー情報一覧</h1>
+
+<%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
+  <%= text_field_tag "search[title]" %>
+  <%= submit_tag "検索" %>
+<% end %>
+
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>コード</th>
+      <th>氏名</th>
+      <th>部署</th>
+      
+      <th colspan="3">アクション</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <% if user.name == session[:name] %>
+        <tr>
+          <td><%= user.code %></td>
+          <td><%= user.name %></td>
+          <td><%= user.department_id %></td>
+          <td><%= link_to '詳細', user %></td>
+          <td><%= link_to '変更', edit_user_path(user) %></td>
+          <td><%= link_to '削除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% else %>
+        <tr>
+          <td><%= user.code %></td>
+          <td><%= user.name %></td>
+          <td><%= user.department_id %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新規ユーザー登録', new_user_path %>
 
 <%= link_to 'メニューに戻る', menu_index_path %>
+<% end %>

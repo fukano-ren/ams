@@ -1,4 +1,3 @@
-
 <p id="notice"><%= notice %></p>
   <div align=right>
     <%= link_to "ログアウト" , controller: :login, action: :index %>
@@ -19,8 +18,7 @@
   <p>&nbsp;</p>
 
 
-    <div>
-      <p style="width:20%;margin-left:auto;margin-right:auto;text-align:left;"><%= link_to "パスワード変更", edit_password_user_path(session[:usr]) %></p>
-    </div>
-
+  <div>
+    <p style="width:20%;margin-left:auto;margin-right:auto;text-align:left;"><%= link_to "パスワード変更", edit_password_user_path(session[:usr]) %></p>
+  </div>
 </body>

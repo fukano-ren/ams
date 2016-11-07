@@ -14,45 +14,45 @@
 
 
 
-<table border="1">
-  <tr>
-  <div class="field">
-    <td><%= f.label :コード %><br></td>
-    <td><%= f.text_field :code %></td>
-  </div>
-  </tr>
-  <tr>
-  <div class="field">
-    <td><%= f.label :氏名 %><br></td>
-    <td><%= f.text_field :name %></td>
-  </div>
-  </tr>
-  <tr>
-  <div class="field">
-    <td><%= f.label :パスワード %><br></td>
-    <td><%= f.text_field :password %></td>
-  </div>
-  </tr>
-  <tr>
-  <div class="field">
-    <td><%= f.label :所属部署 %><br></td>
-    <td><%= f.number_field :department_id %></td>
-  </div>
-  </tr>
-  <tr>
-  <div class="field">
-    <td><%= f.label :システム管理権限 %><br></td>
-    <td><%= f.check_box :system %></td>
-  </div>
-  </tr>
-  <tr>
-  <div class="field">
-    <td><%= f.label :資産管理権限 %><br></td>
-    <td><%= f.check_box :admin %></td>
-  </div>
-  </tr>
+  <table border="1">
+    <tr>
+      <div class="field">
+        <td><%= f.label :コード %><br></td>
+        <td><%= f.text_field :code %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :氏名 %><br></td>
+        <td><%= f.text_field :name %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :パスワード %><br></td>
+        <td><%= f.text_field :password %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :所属部署 %><br></td>
+        <td><%= f.number_field :department_id %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :システム管理権限 %><br></td>
+        <td><%= f.check_box :system %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :資産管理権限 %><br></td>
+        <td><%= f.check_box :admin %></td>
+      </div>
+    </tr>
+  </table>
 
-</table>
   <div class="actions">
     <%= f.submit :登録%>
   </div>
