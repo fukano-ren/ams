@@ -16,6 +16,12 @@
 
   <table border="1">
     <tr>
+      <p>
+        <td><div align=right><strong>ID</strong></div></td>
+        <td><div align=left><%= params[:id] %></div></td>
+      </p>
+    </tr>
+    <tr>
       <div class="field">
         <td><%= f.label :コード %><br></td>
         <td><%= f.text_field :code %></td>
@@ -27,16 +33,25 @@
         <td><%= f.text_field :name %></td>
       </div>
     </tr>
-    <tr>
-      <div class="field">
-        <td><%= f.label :パスワード %><br></td>
-        <td><%= f.text_field :password %></td>
-      </div>
-    </tr>
+    <% if session[:system] == true %>
+      <tr>
+        <div class="field">
+          <td><%= f.label :パスワード %><br></td>
+          <td><%= f.text_field :password %></td>
+        </div>
+      </tr>
+    <% else %>
+      <tr>
+        <p>
+          <td><div align=right><strong>パスワード:</strong></div></td>
+          <td><div align=left><%= @user.password%></div></td>
+        </p>
+      </tr>
+    <% end %>
     <tr>
       <div class="field">
         <td><%= f.label :所属部署 %><br></td>
-        <td><%= f.number_field :department_id %></td>
+        <td><%= collection_select(:department, :name, Department.all, :id, :name) %><br></td>
       </div>
     </tr>
     <tr>

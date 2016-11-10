@@ -6,8 +6,23 @@
 <h1>ユーザー情報一覧</h1>
 
 <%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
-  <%= text_field_tag "search[title]" %>
-  <%= submit_tag "検索" %>
+  <table border="1">
+    <tr>
+      <th>コード</th>
+      <th><%= text_field_tag "search[code]" %></th>
+    </tr>
+    <tr>
+      <th>氏名</th>
+      <th><%= text_field_tag "search[name]" %></th>
+    </tr> 
+    <tr>
+      <th>部署</th>
+      <th><%= collection_select(:department, :name, Department.all, :id, :name, :prompt => "すべて") %></th>
+
+    </tr>
+
+  </table>
+  <th><%= submit_tag "検索" %></th>
 <% end %>
 
 
@@ -34,14 +49,14 @@
           <% if user.system == true %>
             ○
           <% else %>
-            ×
+            
           <% end %>
         </td>
         <td>
           <% if user.admin == true %>
             ○
           <% else %>
-            ×
+            
           <% end %>
         </td>
         <td><%= link_to '詳細', user %></td>
@@ -55,6 +70,7 @@
 <br>
 
 <%= link_to '新規ユーザー登録', new_user_path %>
+<%= link_to '一括変更', users_zen_edit_path %>
 <%= link_to 'メニューに戻る', menu_index_path %>
 
 <% else %>

@@ -9,6 +9,12 @@
 <table border="1">
   <tr>
     <p>
+      <td><div align=right><strong>ID</strong></div></td>
+      <td><div align=left><%= params[:id] %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
       <td><div align=right><strong>コード</strong></div></td>
       <td><div align=left><%= @user.code %></div></td>
     </p>
@@ -23,13 +29,14 @@
     <% if session[:system] == true %>
       <p>
         <td><div align=right><strong>パスワード:</strong></div></td>
-        <td><div align=left><%= @user.password %></div></td>
+        <td><div align=left><%= @user.password%></div></td>
       </p>
     <% else %>
       <p>
         <td><div align=right><strong>パスワード:</strong></div></td>
-        <td><div align=left><%= @user.password %></div></td>
+        <td><div align=left><%= @user.password.length %></div></td>
       </p>
+    <% end %>
   </tr>
   <tr>
     <p>
@@ -37,18 +44,38 @@
       <td><div align=left><%= @user.department_id %></div></td>
     </p>
   </tr>
-  <tr>
-    <p>
-      <td><div align=right><strong>システム管理権限:</strong></div></td>
-      <td><div align=left><%= @user.system %></div></td>
-    </p>
-  </tr>
-  <tr>
-    <p>
-      <td><div align=right><strong>資産管理権限:</strong></div></td>
-      <td><div align=left><%= @user.admin %></div></td>
-    </p>
-  </tr>
+  <% if session[:system] == true %>
+    <% if @user.system == true %>
+      <tr>
+        <p>
+          <td><div align=right><strong>システム管理権限:</strong></div></td>
+          <td><div align=left><%= "○" %></div></td>
+        </p>
+      </tr>
+    <% else %>
+      <tr>
+        <p>
+          <td><div align=right><strong>システム管理権限:</strong></div></td>
+          <td><div align=left><%= "×" %></div></td>
+        </p>
+      </tr>
+    <% end %>
+    <% if @user.admin == true %>
+      <tr>
+        <p>
+          <td><div align=right><strong>資産管理権限:</strong></div></td>
+          <td><div align=left><%= "○" %></div></td>
+        </p>
+      </tr>
+    <% else %>
+      <tr>
+        <p>
+          <td><div align=right><strong>資産管理権限:</strong></div></td>
+          <td><div align=left><%= "×" %></div></td>
+        </p>
+      </tr>
+    <% end %>
+  <% end %>
   <tr>
     <p>
       <td><div align=right><strong>更新日時</strong></div></td>

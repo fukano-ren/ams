@@ -35,7 +35,7 @@
     <tr>
       <div class="field">
         <td><%= f.label :所属部署 %><br></td>
-        <td><%= f.number_field :department_id %></td>
+        <td><%= collection_select(:department, :name, Department.all, :id, :name) %></td>
       </div>
     </tr>
     <tr>

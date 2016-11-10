@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  
+  get 'users/zen_edit'
   get 'passchen/index'
   get 'menu/index'
   get 'login/index'

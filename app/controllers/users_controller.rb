@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def zen_edit
+    @users = User.all
+  end
+  
   # GET /users/1
   # GET /users/1.json
   def show
@@ -85,7 +89,9 @@ class UsersController < ApplicationController
 
  
  def search 
-   @users_k = Users.where(code: params[]["name"]) 
+   @users = Users.where(code: params["search"]["code"])
+   @users = Users.where(name: params["search"]["name"]) 
+   @users = Users.where(department_id: params["search"]["department_id"])
    render :index
  end
 

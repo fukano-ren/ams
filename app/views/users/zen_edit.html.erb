@@ -1,0 +1,59 @@
+
+<p id="notice"><%= notice %></p>
+  <div align=right>
+    <%= link_to "ログアウト" , controller: :login, action: :index %>
+  </div>
+<h1>ユーザー情報一括変更</h1>
+
+<%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
+  <table border="1">
+    <tr>
+      <th>コード</th>
+      <th><%= text_field_tag "search[code]" %></th>
+    </tr>
+    <tr>
+      <th>氏名</th>
+      <th><%= text_field_tag "search[name]" %></th>
+    </tr> 
+    <tr>
+      <th>部署</th>
+      <th><%= collection_select(:department, :name, Department.all, :id, :name, :prompt => "すべて") %></th>
+
+    </tr>
+
+  </table>
+  <th><%= submit_tag "検索" %></th>
+<% end %>
+
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>コード</th>
+      <th>氏名</th>
+      <th>パスワード</th>
+      <th>部署</th>
+      <th>システム管理</th>
+      <th>資産管理</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.code %></td>
+        <td><%= text_field :user, :name %></td>
+        <td><%= user.password %></td>
+        <td><%= user.department_id %></td>
+        <td><%= user.system %></td>
+        <td><%= user.admin %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '一覧に戻る', users_index_path %>
+<%= link_to 'メニューに戻る', menu_index_path %>
