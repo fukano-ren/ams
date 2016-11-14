@@ -34,14 +34,14 @@
     <% else %>
       <p>
         <td><div align=right><strong>パスワード:</strong></div></td>
-        <td><div align=left><%= @user.password.length %></div></td>
+        <td><div align=left><%= @user.password.gsub(/\S/,"●") %></div></td>
       </p>
     <% end %>
   </tr>
   <tr>
     <p>
       <td><div align=right><strong>所属部署:</strong></div></td>
-      <td><div align=left><%= @user.department_id %></div></td>
+      <td><div align=left><%= @user.department.try(:name) %></div></td>
     </p>
   </tr>
   <% if session[:system] == true %>
@@ -89,7 +89,8 @@
     </p>
   </tr>
 </table>
-
+<span>
 <%= link_to '変更する', edit_user_path(@user) %> 
 <%= link_to '一覧に戻る', users_path %>
 <%= link_to 'メニューに戻る', menu_index_path %>
+</span>

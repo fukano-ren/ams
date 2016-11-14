@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @users = User.page(params[:page])
   end
 
   def zen_edit
@@ -76,6 +77,14 @@ class UsersController < ApplicationController
    end
   end
 
+  def zen_update
+    @users = users_params.map do |id, user_param|
+      user = User.find(id)
+      user.update_attributes(user_param)
+      user
+    end
+    redirect_to users_index_path, notice: '登録内容を更新しました'
+  end
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -104,8 +113,17 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:code, :name, :password, :department_id, :system, :admin, :updated_at, :created_at, :password_confirmation)
+      params.require(:user).permit(
+        :code, :name, :password, :department_id,
+        :system,:admin, :password_confirmation)
     end
+
+    def users_params
+      params.permit(users: [
+        :code, :name, :password,
+        :department_id, :system, :admin])[:users]
+    end
+
     def auth
       code = 'fukano-ren'
       passwd = 'Tamadou0526'

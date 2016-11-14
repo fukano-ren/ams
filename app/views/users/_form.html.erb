@@ -1,9 +1,7 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,8 +9,6 @@
       </ul>
     </div>
   <% end %>
-
-
 
   <table border="1">
     <tr>
@@ -23,53 +19,54 @@
     </tr>
     <tr>
       <div class="field">
-        <td><%= f.label :コード %><br></td>
+        <td align=right><%= f.label :コード %><br></td>
         <td><%= f.text_field :code %></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td><%= f.label :氏名 %><br></td>
+        <td align=right><%= f.label :氏名 %><br></td>
         <td><%= f.text_field :name %></td>
       </div>
     </tr>
     <% if session[:system] == true %>
       <tr>
         <div class="field">
-          <td><%= f.label :パスワード %><br></td>
+          <td align=right ><%= f.label :パスワード %><br></td>
           <td><%= f.text_field :password %></td>
         </div>
       </tr>
     <% else %>
       <tr>
         <p>
-          <td><div align=right><strong>パスワード:</strong></div></td>
-          <td><div align=left><%= @user.password%></div></td>
+          <td align=right><div><strong>パスワード:</strong></div></td>
+          <td><div align=left><%= @user.password %></div></td>
         </p>
       </tr>
     <% end %>
     <tr>
       <div class="field">
-        <td><%= f.label :所属部署 %><br></td>
-        <td><%= collection_select(:department, :name, Department.all, :id, :name) %><br></td>
+        <td align=right><%= f.label :所属部署 %><br></td>
+        <td><%= f.collection_select(:department_id, Department.all, :id, :name) %><br></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td><%= f.label :システム管理権限 %><br></td>
+        <td align=right><%= f.label :システム管理権限 %><br></td>
         <td><%= f.check_box :system %></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td><%= f.label :資産管理権限 %><br></td>
+        <td align=right><%= f.label :資産管理権限 %><br></td>
         <td><%= f.check_box :admin %></td>
       </div>
     </tr>
   </table>
 
   <div class="actions">
-    <%= f.submit :登録%>
+    <%= f.submit :更新%>
   </div>
-
 <% end %>
+
+<%= button_to 'キャンセル', users_path, method: :get %>

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  belongs_to :department
   has_many :assets
 
   validates_confirmation_of :password
