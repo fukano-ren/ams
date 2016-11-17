@@ -5,12 +5,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
     @users = User.page(params[:page])
   end
 
   def zen_edit
-    @users = User.all
+    @users = User.page(params[:page])
   end
   
   # GET /users/1
@@ -97,13 +96,39 @@ class UsersController < ApplicationController
   end
 
  
- def search 
-   @users = Users.where(code: params["search"]["code"])
-   @users = Users.where(name: params["search"]["name"]) 
-   @users = Users.where(department_id: params["search"]["department_id"])
-   render :index
- end
+  def search 
+    @users = User.page(params[:page])
+    @search_code = params["search"]["code"]
+    @search_name = params["search"]["name"]
+    @search_department_id = params["search"]["department_id"]
+    if @search_code.present?
+      @users = @users.where("code LIKE '#{@search_code}%'")
+    end
+    if @search_name.present?
+      @users = @users.where("name LIKE '%#{@search_name}%'")
+    end
+    if @search_department_id.present?
+      @users = @users.where("department_id LIKE '{@search_department_id}'")
+    end
+    render :index
+  end
 
+  def zen_search 
+    @users = User.page(params[:page])
+    @search_code = params["search"]["code"]
+    @search_name = params["search"]["name"]
+    @search_department_id = params["search"]["department_id"]
+    if @search_code.present?
+      @users = @users.where("code LIKE '#{@search_code}%'")
+    end
+    if @search_name.present?
+      @users = @users.where("name LIKE '%#{@search_name}%'")
+    end
+    if @search_department_id.present?
+      @users = @users.where("department_id LIKE '{@search_department_id}'")
+    end
+    render :zen_edit
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

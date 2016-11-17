@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :assets
   resources :users do
     get 'search', on: :collection
+    get 'zen_search', on: :collection
     get 'edit_password', on: :member
     patch 'update_password', on: :member
   end
