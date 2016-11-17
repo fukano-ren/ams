@@ -6,8 +6,6 @@
 
   <h1>ユーザー情報一覧</h1>
 
-  <%= page_entries_info @users %>
-
   <%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
     <table border="1">
       <tr>
@@ -23,8 +21,9 @@
         <th><%= collection_select(:department, :name, Department.all, :id, :name, :prompt => "すべて") %></th>
       </tr>
     </table>
-    <span><%= submit_tag "検索" %></span>
+    <%= submit_tag "検索" %>
   <% end %>
+  
   <div style="margin-left:535px"><%= paginate @users %></div>
   <table border="1">
     <thead>

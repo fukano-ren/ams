@@ -5,7 +5,7 @@
 
 <h1>ユーザー情報一括変更</h1>
 
-<%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
+<%= form_tag({:action=>"zen_search"},{:method=>"GET"}) do %>
   <table border="1">
     <tr>
       <th>コード</th>
@@ -22,7 +22,7 @@
   </table>
   <div><%= submit_tag "検索" %></div>
 <% end %>
-
+  <div style="margin-left:535px"><%= paginate @users %></div>
 <table border="1">
   <thead>
     <tr>
