@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @belong.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @belong.name %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @belong.model %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @belong.department_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @belong.user_id %>
+</p>
+
+<p>
+  <strong>Acquired on:</strong>
+  <%= @belong.acquired_on %>
+</p>
+
+<p>
+  <strong>Disponed on:</strong>
+  <%= @belong.disponed_on %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @belong.memo %>
+</p>
+
+<p>
+  <strong>Delete flg:</strong>
+  <%= @belong.delete_flg %>
+</p>
+
+<p>
+  <strong>Update at:</strong>
+  <%= @belong.update_at %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @belong.created_at %>
+</p>
+
+<%= link_to 'Edit', edit_belong_path(@belong) %> |
+<%= link_to 'Back', belongs_path %>

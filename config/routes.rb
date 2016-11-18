@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :belongs
   put 'users/zen_update'
   get 'users/zen_edit'
   get 'passchen/index'
   get 'menu/index'
   get 'login/index'
   get 'departments/index'
-  get 'assets/index'
+  get 'belongs/index'
   get 'users/index'
   post 'login/auth'
-  resources :assets
+  resources :belongs
   resources :users do
     get 'search', on: :collection
     get 'zen_search', on: :collection

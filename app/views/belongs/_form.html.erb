@@ -1,0 +1,61 @@
+<%= form_for(@belong) do |f| %>
+  <% if @belong.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@belong.errors.count, "error") %> prohibited this belong from being saved:</h2>
+
+      <ul>
+      <% @belong.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :model %><br>
+    <%= f.text_field :model %>
+  </div>
+  <div class="field">
+    <%= f.label :department_id %><br>
+    <%= f.number_field :department_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :acquired_on %><br>
+    <%= f.date_select :acquired_on %>
+  </div>
+  <div class="field">
+    <%= f.label :disponed_on %><br>
+    <%= f.date_select :disponed_on %>
+  </div>
+  <div class="field">
+    <%= f.label :memo %><br>
+    <%= f.text_area :memo %>
+  </div>
+  <div class="field">
+    <%= f.label :delete_flg %><br>
+    <%= f.check_box :delete_flg %>
+  </div>
+  <div class="field">
+    <%= f.label :update_at %><br>
+    <%= f.datetime_select :update_at %>
+  </div>
+  <div class="field">
+    <%= f.label :created_at %><br>
+    <%= f.datetime_select :created_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

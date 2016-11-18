@@ -18,7 +18,7 @@
       </tr> 
       <tr>
         <th>部署</th>
-        <th><%= collection_select(:department, :name, Department.all, :id, :name, :prompt => "すべて") %></th>
+        <th><%= collection_select("search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></th>
       </tr>
     </table>
     <%= submit_tag "検索" %>

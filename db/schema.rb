@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027020518) do
+ActiveRecord::Schema.define(version: 20161118013210) do
 
   create_table "assets", force: :cascade do |t|
     t.string   "code"
@@ -27,11 +27,41 @@ ActiveRecord::Schema.define(version: 20161027020518) do
     t.datetime "created_at",    null: false
   end
 
+  create_table "belongs", force: :cascade do |t|
+    t.string   "code"
+    t.string   "name"
+    t.string   "model"
+    t.integer  "department_id"
+    t.integer  "user_id"
+    t.date     "acquired_on"
+    t.date     "disponed_on"
+    t.text     "memo"
+    t.boolean  "delete_flg"
+    t.datetime "update_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "departments", force: :cascade do |t|
     t.string   "code"
     t.string   "name"
     t.datetime "updated_at", null: false
     t.datetime "created_at", null: false
+  end
+
+  create_table "shisans", force: :cascade do |t|
+    t.string   "code"
+    t.string   "name"
+    t.string   "model"
+    t.integer  "department_id"
+    t.integer  "user_id"
+    t.date     "acquired_on"
+    t.date     "disponed_on"
+    t.text     "memo"
+    t.boolean  "delete_flg"
+    t.datetime "update_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
