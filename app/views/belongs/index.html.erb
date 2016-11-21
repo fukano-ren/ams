@@ -1,21 +1,46 @@
 <p id="notice"><%= notice %></p>
+    <div align=right>
+      <%= link_to "ログアウト" , controller: :login, action: :index %>
+    </div>
+<h1>資産情報一覧</h1>
 
-<h1>Listing Belongs</h1>
+ <%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
+    <table border="1">
+      <tr>
+        <th>コード</th>
+        <th><%= text_field_tag "search[code]" %></th>
+        <th>状態</th>
+        <th>aaa</th>
+      </tr>
+      <tr>
+        <th>品名</th>
+        <th><%= text_field_tag "search[name]" %></th>
+        <th>型番</th>
+        <th><%= text_field_tag "search[model]" %></th>
+      </tr> 
+      <tr>
+        <th>部署</th>
+        <th><%= collection_select("search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></th>
+        <th>使用者</th>
+        <th>bbb</th>
+      </tr>
+      <tr>
+        <th>取得日付</th>
+        <th>ccc</th>
+      </tr>
+    </table>
+    <%= submit_tag "検索" %>
+  <% end %>
 
-<table>
+<table border="1">
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Name</th>
-      <th>Model</th>
-      <th>Department</th>
-      <th>User</th>
-      <th>Acquired on</th>
-      <th>Disponed on</th>
-      <th>Memo</th>
-      <th>Delete flg</th>
-      <th>Update at</th>
-      <th>Created at</th>
+      <th>コード</th>
+      <th>品名</th>
+      <th>型番</th>
+      <th>部署</th>
+      <th>使用者</th>
+      <th>取得日</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,17 +51,12 @@
         <td><%= belong.code %></td>
         <td><%= belong.name %></td>
         <td><%= belong.model %></td>
-        <td><%= belong.department_id %></td>
-        <td><%= belong.user_id %></td>
+        <td><%= belong.department.try(:name) %></td>
+        <td><%= belong.user.try(:name) %></td>
         <td><%= belong.acquired_on %></td>
-        <td><%= belong.disponed_on %></td>
-        <td><%= belong.memo %></td>
-        <td><%= belong.delete_flg %></td>
-        <td><%= belong.update_at %></td>
-        <td><%= belong.created_at %></td>
-        <td><%= link_to 'Show', belong %></td>
-        <td><%= link_to 'Edit', edit_belong_path(belong) %></td>
-        <td><%= link_to 'Destroy', belong, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', belong %></td>
+        <td><%= link_to '変更', edit_belong_path(belong) %></td>
+        <td><%= link_to '削除', belong, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -44,4 +64,4 @@
 
 <br>
 
-<%= link_to 'New Belong', new_belong_path %>
+<%= link_to '新規資産登録', new_belong_path %>

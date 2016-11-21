@@ -1,5 +1,64 @@
-<h1>New Belong</h1>
+<%= form_for(@belong) do |f| %>
+  <% if @belong.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@belong.errors.count, "error") %> prohibited this belong from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @belong.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Back', belongs_path %>
+  <h1>資産情報登録</h1>
+
+	<table border="1">
+	  <tr>
+	    <div class="field">
+	      <td><%= f.label "コード" %><br></td>
+	      <td><%= f.text_field :code %></td>
+	    </div>
+      </tr>
+      <tr>
+	    <div class="field">
+	      <td><%= f.label "品名" %><br></td>
+	      <td><%= f.text_field :name %></td>
+	    </div>
+      </tr>
+      <tr>
+	    <div class="field">
+	      <td><%= f.label "型番" %><br></td>
+	      <td><%= f.text_field :model %></td>
+	    </div>
+      </tr>
+      <tr>
+	    <div class="field">
+	      <td><%= f.label "管理部署" %><br></td>
+	      <td><%= f.collection_select(:department_id, Department.all, :id, :name, :prompt => "") %></td>
+	    </div>
+      </tr>
+      <tr>
+	    <div class="field">
+	      <td><%= f.label "主使用者" %><br></td>
+	      <td><%= f.collection_select(:user_id, User.all, :id, :name, :prompt => "") %></td>
+	    </div>
+      </tr>
+      <tr>
+	    <div class="field">
+	      <td><%= f.label "取得日付" %><br></td>
+	      <td><%= f.date_select :acquired_on %></td>
+	    </div>
+      </tr>
+      <tr>
+	    <div class="field">
+	      <td><%= f.label "備考" %><br></td>
+	      <td><%= f.text_area :memo %></td>
+	    </div>
+      </tr>
+	  <div class="actions">
+	    <%= f.submit "登録" %>
+      </div>
+	</table>
+  <% end %>
+<%= link_to 'キャンセル', belongs_path %>

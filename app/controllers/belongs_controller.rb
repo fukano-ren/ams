@@ -4,7 +4,7 @@ class BelongsController < ApplicationController
   # GET /belongs
   # GET /belongs.json
   def index
-    @belongs = Belong.all
+    @belongs = Belong.page(params[:page])
   end
 
   # GET /belongs/1
@@ -59,6 +59,27 @@ class BelongsController < ApplicationController
       format.html { redirect_to belongs_url, notice: 'Belong was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def search 
+    @belongs = Belong.page(params[:page])
+    @search_code = params["search"]["code"]
+    @search_name = params["search"]["name"]
+    @search_model = params["search"]["model"]
+    @search_department_id = params["search"]["department_id"]
+    if @search_code.present?
+      @belongs = @belongs.where("code LIKE '#{@search_code}%'")
+    end
+    if @search_name.present?
+      @belongs = @belongs.where("name LIKE '%#{@search_name}%'")
+    end
+    if @search_model.present?
+      @belongs = @belongs.where("model LIKE '%#{@search_model}%'")
+    end
+    if @search_department_id.present?
+      @belongs = @belongs.where("department_id LIKE '#{@search_department_id}'")
+    end
+    render :index
   end
 
   private

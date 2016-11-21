@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'menu/index'
   get 'login/index'
   post 'login/auth'
-  resources :belongs
+  resources :belongs do
+    get 'search', on: :collection
+  end
   resources :users do
     get 'search', on: :collection
     get 'zen_search', on: :collection
