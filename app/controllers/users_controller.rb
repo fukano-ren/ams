@@ -108,7 +108,11 @@ class UsersController < ApplicationController
       @users = @users.where("name LIKE '%#{@search_name}%'")
     end
     if @search_department_id.present?
+<<<<<<< HEAD
       @users = @users.where("department_id LIKE '#{@search_department_id}'")
+=======
+      @users = @users.where("department_id LIKE '{@search_department_id}'")
+>>>>>>> origin/master
     end
     render :index
   end
@@ -125,7 +129,11 @@ class UsersController < ApplicationController
       @users = @users.where("name LIKE '%#{@search_name}%'")
     end
     if @search_department_id.present?
+<<<<<<< HEAD
       @users = @users.where("department_id LIKE '#{@search_department_id}'")
+=======
+      @users = @users.where("department_id LIKE '{@search_department_id}'")
+>>>>>>> origin/master
     end
     render :zen_edit
   end
