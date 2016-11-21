@@ -82,7 +82,7 @@ class UsersController < ApplicationController
       user.update_attributes(user_param)
       user
     end
-    redirect_to users_index_path, notice: '登録内容を更新しました'
+    redirect_to users_path, notice: '登録内容を更新しました'
   end
 
   # DELETE /users/1
@@ -108,7 +108,7 @@ class UsersController < ApplicationController
       @users = @users.where("name LIKE '%#{@search_name}%'")
     end
     if @search_department_id.present?
-      @users = @users.where("department_id LIKE '{@search_department_id}'")
+      @users = @users.where("department_id LIKE '#{@search_department_id}'")
     end
     render :index
   end
@@ -125,7 +125,7 @@ class UsersController < ApplicationController
       @users = @users.where("name LIKE '%#{@search_name}%'")
     end
     if @search_department_id.present?
-      @users = @users.where("department_id LIKE '{@search_department_id}'")
+      @users = @users.where("department_id LIKE '#{@search_department_id}'")
     end
     render :zen_edit
   end
