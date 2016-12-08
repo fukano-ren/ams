@@ -66,6 +66,7 @@ class BelongsController < ApplicationController
     @search_code = params["search"]["code"]
     @search_name = params["search"]["name"]
     @search_model = params["search"]["model"]
+    @search_model = params["search"]["user_id"]
     @search_department_id = params["search"]["department_id"]
     if @search_code.present?
       @belongs = @belongs.where("code LIKE '#{@search_code}%'")
@@ -75,6 +76,9 @@ class BelongsController < ApplicationController
     end
     if @search_model.present?
       @belongs = @belongs.where("model LIKE '%#{@search_model}%'")
+    end
+    if @search_user_id.present?
+      @belongs = @belongs.where("user_id LIKE '#{@search_user_id}'")
     end
     if @search_department_id.present?
       @belongs = @belongs.where("department_id LIKE '#{@search_department_id}'")

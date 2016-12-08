@@ -1,6 +1,10 @@
-<h1>Editing Belong</h1>
+<div align=right>
+  <%= link_to "ログアウト" , controller: :login, action: :index %>
+</div>
+
+<h1>資産情報変更</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @belong %> |
-<%= link_to 'Back', belongs_path %>
+<%= link_to 'キャンセル', belongs_path %> |
+<%= link_to 'メニューに戻る', menu_index_path %>

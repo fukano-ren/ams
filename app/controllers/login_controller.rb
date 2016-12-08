@@ -15,7 +15,7 @@ class LoginController < ApplicationController
       redirect_to controller: 'menu', action: 'index'
     else
       flash.now[:referer] = params[:referer]
-      @error = 'ユーザー/パスワードが間違っています。'
+      @error = 'ユーザー/パスワードを入力してください。'
       render 'index'
     end
   end

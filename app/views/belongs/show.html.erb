@@ -1,59 +1,83 @@
 <p id="notice"><%= notice %></p>
+<div align=right>
+  <%= link_to "ログアウト" , controller: :login, action: :index %>
+</div>
+<h1>資産情報詳細</h1>
 
-<p>
-  <strong>Code:</strong>
-  <%= @belong.code %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @belong.name %>
-</p>
-
-<p>
-  <strong>Model:</strong>
-  <%= @belong.model %>
-</p>
-
-<p>
-  <strong>Department:</strong>
-  <%= @belong.department_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @belong.user_id %>
-</p>
-
-<p>
-  <strong>Acquired on:</strong>
-  <%= @belong.acquired_on %>
-</p>
-
-<p>
-  <strong>Disponed on:</strong>
-  <%= @belong.disponed_on %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
-  <%= @belong.memo %>
-</p>
-
-<p>
-  <strong>Delete flg:</strong>
-  <%= @belong.delete_flg %>
-</p>
-
-<p>
-  <strong>Update at:</strong>
-  <%= @belong.update_at %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @belong.created_at %>
-</p>
-
-<%= link_to 'Edit', edit_belong_path(@belong) %> |
-<%= link_to 'Back', belongs_path %>
+<table border="1">
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>ID</strong></div></td>
+      <td width="200" height="30"><div align=left><%= params[:id] %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>コード</strong></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.code %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>品名</strong></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.name %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>型番</strong></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.model %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>管理部署</strong></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.department_id %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>主使用者</strong></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.user_id %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>取得日付</strong></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.acquired_on %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>廃棄日付</strong></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.disponed_on %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="130"><div align=right><strong>備考</strong></div></td>
+      <td width="200" height="130"><div align=left><%= @belong.memo %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>あああ</strong></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.delete_flg %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>更新日付</strong></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.update_at %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>登録日付</strong></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.created_at %></div></td>
+    </p>
+  </tr>
+</table>
+<%= link_to '変更する', edit_belong_path(@belong) %> 
+<%= link_to '一覧に戻る', belongs_path %>
+<%= link_to 'メニューに戻る', menu_index_path %>
