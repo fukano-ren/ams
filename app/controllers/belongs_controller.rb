@@ -64,10 +64,13 @@ class BelongsController < ApplicationController
   def search 
     @belongs = Belong.page(params[:page])
     @search_code = params["search"]["code"]
+    @search_state = params["search"]["state"]
     @search_name = params["search"]["name"]
     @search_model = params["search"]["model"]
-    @search_model = params["search"]["user_id"]
+    @search_user_id = params["search"]["user_id"]
     @search_department_id = params["search"]["department_id"]
+    @search_before_date = params["search"]["before_date"]
+    @search_after_date = params["search"]["after_date"]
     if @search_code.present?
       @belongs = @belongs.where("code LIKE '#{@search_code}%'")
     end
@@ -94,6 +97,6 @@ class BelongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def belong_params
-      params.require(:belong).permit(:code, :name, :model, :department_id, :user_id, :acquired_on, :disponed_on, :memo, :delete_flg, :update_at, :created_at)
+      params.require(:belong).permit(:code, :name, :model, :department_id, :user_id, :acquired_on, :disponed_on, :memo, :delete_flg, :updated_at, :created_at)
     end
 end

@@ -18,7 +18,7 @@ class BelongsControllerTest < ActionController::TestCase
 
   test "should create belong" do
     assert_difference('Belong.count') do
-      post :create, belong: { acquired_on: @belong.acquired_on, code: @belong.code, created_at: @belong.created_at, delete_flg: @belong.delete_flg, department_id: @belong.department_id, disponed_on: @belong.disponed_on, memo: @belong.memo, model: @belong.model, name: @belong.name, update_at: @belong.update_at, user_id: @belong.user_id }
+      post :create, belong: { acquired_on: @belong.acquired_on, code: @belong.code, created_at: @belong.created_at, delete_flg: @belong.delete_flg, department_id: @belong.department_id, disponed_on: @belong.disponed_on, memo: @belong.memo, model: @belong.model, name: @belong.name, updated_at: @belong.updated_at, user_id: @belong.user_id }
     end
 
     assert_redirected_to belong_path(assigns(:belong))

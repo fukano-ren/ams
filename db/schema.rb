@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20161118013210) do
     t.date     "disponed_on"
     t.text     "memo"
     t.boolean  "delete_flg"
-    t.datetime "update_at"
+    t.datetime "updated_at"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

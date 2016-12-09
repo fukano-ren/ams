@@ -10,7 +10,7 @@ one:
   disponed_on: 2016-11-18
   memo: MyText
   delete_flg: false
-  update_at: 2016-11-18 10:32:10
+  updated_at: 2016-11-18 10:32:10
   created_at: 2016-11-18 10:32:10
 
 two:

@@ -2,11 +2,10 @@
   <% if @belong.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@belong.errors.count, "error") %> prohibited this belong from being saved:</h2>
-
       <ul>
-      <% @belong.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @belong.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -70,7 +69,7 @@
   <tr>
     <p>
       <td width="100" height="30"><div align=right><strong>更新日付</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.update_at %></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.updated_at %></div></td>
     </p>
   </tr>
   <tr>
@@ -84,3 +83,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+<%= button_to 'キャンセル', belongs_path, method: :get %>

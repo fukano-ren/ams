@@ -1,37 +1,40 @@
 <p id="notice"><%= notice %></p>
-    <div align=right>
-      <%= link_to "ログアウト" , controller: :login, action: :index %>
-    </div>
+<div align=right>
+<%= link_to "ログアウト" , controller: :login, action: :index %>
+</div>
 <h1>資産情報一覧</h1>
 
- <%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
-    <table border="1">
-      <tr>
-        <th>コード</th>
-        <th><%= text_field_tag "search[code]" %></th>
-        <th>状態</th>
-        <th>aaa</th>
-      </tr>
-      <tr>
-        <th>品名</th>
-        <th><%= text_field_tag "search[name]" %></th>
-        <th>型番</th>
-        <th><%= text_field_tag "search[model]" %></th>
-      </tr> 
-      <tr>
-        <th>部署</th>
-        <th><%= collection_select("search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></th>
-        <th>使用者</th>
-        <th><%= collection_select("search", "user_id", User.all, :id, :name, :prompt => "") %></th>
-      </tr>
-      <tr>
-        <th>取得日付</th>
-        <th>ccc</th>
-      </tr>
-    </table>
-    <%= submit_tag "検索" %>
-  <% end %>
-
+<%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
+  <table border="1">
+    <tr>
+      <th>コード</th>
+      <th><%= text_field_tag "search[code]" %></th>
+      <th>状態</th>
+      <th><%= select "search","state",["すべて","使用中","廃棄済み"] %></th>
+    </tr>
+    <tr>
+      <th>品名</th>
+      <th><%= text_field_tag "search[name]" %></th>
+      <th>型番</th>
+      <th><%= text_field_tag "search[model]" %></th>
+    </tr> 
+    <tr>
+      <th>部署</th>
+      <th><%= collection_select("search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></th>
+      <th>使用者</th>
+      <th><%= collection_select("search", "user_id", User.all, :id, :name, :prompt => "") %></th>
+    </tr>
+    <tr>
+      <th>取得日付</th>
+      <th>
+d
+      </th>
+    </tr>
+  </table>
+  <%= submit_tag "検索" %>
+<% end %>
+<div style="margin-right:535px"><%= "検索結果：#{Belong.count}件" %></div>
+<div style="margin-left:535px"><%= paginate @belongs %></div>
 <table border="1">
   <thead>
     <tr>
@@ -41,7 +44,7 @@
       <th align=center width="100" height="30">部署</th>
       <th align=center width="100" height="30">使用者</th>
       <th align=center width="120" height="30">取得日</th>
-      <th align=center width="120" height="30"　colspan="3">アクション</th>
+      <th align=center width="150" height="30"　colspan="4">アクション</th>
     </tr>
   </thead>
 
@@ -55,6 +58,7 @@
         <td align=center height="30"><%= belong.user.try(:name) %></td>
         <td align=center height="30"><%= belong.acquired_on %></td>
         <td align=center height="30">
+          <%= link_to 'コピー',new_belong_path %>
           <%= link_to '詳細', belong %>
           <% if session[:system] == true %>
             <%= link_to '変更', edit_belong_path(belong) %>
@@ -72,4 +76,5 @@
 
 <br>
 
-<%= link_to '新規資産登録', new_belong_path %>
+  <%= link_to '新規資産登録', new_belong_path %>
+  <%= link_to 'メニューに戻る', menu_index_path %>

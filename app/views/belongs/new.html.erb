@@ -56,9 +56,9 @@
 	      <td><%= f.text_area :memo %></td>
 	    </div>
       </tr>
-	  <div class="actions">
-	    <%= f.submit "登録" %>
-      </div>
-	</table>
+    </table>
+	<span class="actions">
+	  <%= f.submit "登録" %>
+	</span>
   <% end %>
-<%= link_to 'キャンセル', belongs_path %>
+  <span><%= button_to 'キャンセル', belongs_path, method: :get %></span>

@@ -32,13 +32,13 @@
   <tr>
     <p>
       <td width="100" height="30"><div align=right><strong>管理部署</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.department_id %></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.department.try(:name) %></div></td>
     </p>
   </tr>
   <tr>
     <p>
       <td width="100" height="30"><div align=right><strong>主使用者</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.user_id %></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.user.try(:name) %></div></td>
     </p>
   </tr>
   <tr>
@@ -68,7 +68,7 @@
   <tr>
     <p>
       <td width="100" height="30"><div align=right><strong>更新日付</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.update_at %></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.updated_at %></div></td>
     </p>
   </tr>
   <tr>
