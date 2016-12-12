@@ -27,7 +27,13 @@
     <tr>
       <th>取得日付</th>
       <th>
-d
+      <div class="field">
+        <%= text_field "search", "before_date", :class => 'datepicker' %>
+      
+~
+      
+        <%= text_field "search", "after_date", :class => 'datepicker' %>
+      </div>
       </th>
     </tr>
   </table>

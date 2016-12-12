@@ -158,14 +158,14 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bootstrap3-datetimepicker-rails (~> 4.17.37)
+  bootstrap3-datetimepicker-rails
   byebug
   coffee-rails (~> 4.1.0)
   coffee-script-source (= 1.8.0)
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
-  momentjs-rails (>= 2.9.0)
+  momentjs-rails
   pg
   rails (= 4.2.5.1)
   rails_12factor

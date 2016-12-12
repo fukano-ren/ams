@@ -18,5 +18,13 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 
+var data = {'data-date-format': 'YYYY-MM-DD' };
+var ready = function(){
+  $('.datepicker').attr(data);
+  $('.datepicker').datetimepicker();
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
 
 

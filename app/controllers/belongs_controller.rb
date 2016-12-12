@@ -86,6 +86,7 @@ class BelongsController < ApplicationController
     if @search_department_id.present?
       @belongs = @belongs.where("department_id LIKE '#{@search_department_id}'")
     end
+
     render :index
   end
 
