@@ -46,6 +46,12 @@
       </tr>
       <tr>
 	    <div class="field">
+          <td><%= f.label "設置場所" %><br></td>
+	      <td><%= text_field_tag 'belong[set]' %></td>
+	    </div>
+      </tr>
+      <tr>
+	    <div class="field">
 	      <td><%= f.label "取得日付" %><br></td>
 	      <td><%= f.text_field :acquired_on, :class => 'datepicker' %></td>
 	    </div>

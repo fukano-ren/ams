@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'login/auth'
   resources :belongs do
     get 'search', on: :collection
+    post 'copy', on: :member
   end
   resources :users do
     get 'search', on: :collection

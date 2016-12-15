@@ -37,6 +37,14 @@ class BelongsController < ApplicationController
     end
   end
 
+  def copy
+    @old_belong = Belong.find(params[:id])
+    @belong = Belong.new
+    @belong.attributes = @old_belong.attributes 
+    
+    render :action => "new"
+  end
+
   # PATCH/PUT /belongs/1
   # PATCH/PUT /belongs/1.json
   def update

@@ -41,7 +41,7 @@
   <tr>
     <p>
       <td><div align=right><strong>所属部署:</strong></div></td>
-      <td><div align=left><%= @user.department.try(:name) %></div></td>
+      <td><div align=left><%= @user.department_id %>:<%= @user.department.try(:name) %></div></td>
     </p>
   </tr>
   <% if session[:system] == true %>

@@ -32,13 +32,19 @@
   <tr>
     <p>
       <td width="100" height="30"><div align=right><strong>管理部署</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.department.try(:name) %></div></td>
+      <td width="200" height="30"><div align=left><%= @belong.department_id %>:<%= @belong.department.try(:name) %></div></td>
     </p>
   </tr>
   <tr>
     <p>
       <td width="100" height="30"><div align=right><strong>主使用者</strong></div></td>
       <td width="200" height="30"><div align=left><%= @belong.user.try(:name) %></div></td>
+    </p>
+  </tr>
+  <tr>
+    <p>
+      <td width="100" height="30"><div align=right><strong>設置場所</strong></div></td>
+      <td width="200" height="30"><div align=left><%= 'belong[set]' %></div></td>
     </p>
   </tr>
   <tr>
