@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118013210) do
+ActiveRecord::Schema.define(version: 20161216002619) do
 
   create_table "assets", force: :cascade do |t|
     t.string   "code"
@@ -37,9 +37,10 @@ ActiveRecord::Schema.define(version: 20161118013210) do
     t.date     "disponed_on"
     t.text     "memo"
     t.boolean  "delete_flg"
-    t.datetime "updated_at"
+    t.datetime "update_at"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "set"
   end
 
   create_table "departments", force: :cascade do |t|
