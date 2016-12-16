@@ -12,6 +12,7 @@ one:
   delete_flg: false
   updated_at: 2016-11-18 10:32:10
   created_at: 2016-11-18 10:32:10
+  set: MyString
 
 two:
   code: MyString
@@ -25,3 +26,4 @@ two:
   delete_flg: false
   update_at: 2016-11-18 10:32:10
   created_at: 2016-11-18 10:32:10
+  set: MyString

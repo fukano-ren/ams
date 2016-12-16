@@ -40,7 +40,7 @@ class BelongsController < ApplicationController
   def copy
     @old_belong = Belong.find(params[:id])
     @belong = Belong.new
-    @belong.attributes = @old_belong.attributes 
+    @belong.attributes = @old_belong.attributes
     
     render :action => "new"
   end
@@ -106,6 +106,6 @@ class BelongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def belong_params
-      params.require(:belong).permit(:code, :name, :model, :department_id, :user_id, :acquired_on, :disponed_on, :memo, :delete_flg, :updated_at, :created_at)
+      params.require(:belong).permit(:code, :name, :model, :set, :department_id, :user_id, :acquired_on, :disponed_on, :memo, :delete_flg, :updated_at, :created_at)
     end
 end

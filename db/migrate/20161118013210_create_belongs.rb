@@ -12,7 +12,7 @@ class CreateBelongs < ActiveRecord::Migration
       t.boolean :delete_flg
       t.datetime :updated_at
       t.datetime :created_at
-
+      t.string :set
       t.timestamps null: false
     end
   end
