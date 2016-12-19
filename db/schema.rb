@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216002619) do
+ActiveRecord::Schema.define(version: 20161219002328) do
 
   create_table "assets", force: :cascade do |t|
     t.string   "code"
@@ -38,10 +38,13 @@ ActiveRecord::Schema.define(version: 20161216002619) do
     t.text     "memo"
     t.boolean  "delete_flg"
     t.datetime "update_at"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "set"
+    t.datetime "soft_destroyed_at"
   end
+
+  add_index "belongs", ["soft_destroyed_at"], name: "index_belongs_on_soft_destroyed_at"
 
   create_table "departments", force: :cascade do |t|
     t.string   "code"

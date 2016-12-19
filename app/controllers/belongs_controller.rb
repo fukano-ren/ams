@@ -41,7 +41,8 @@ class BelongsController < ApplicationController
     @old_belong = Belong.find(params[:id])
     @belong = Belong.new
     @belong.attributes = @old_belong.attributes
-    
+    @belong.code = nil 
+    @belong.memo = nil
     render :action => "new"
   end
 
@@ -62,7 +63,7 @@ class BelongsController < ApplicationController
   # DELETE /belongs/1
   # DELETE /belongs/1.json
   def destroy
-    @belong.destroy
+    @belong.soft_destroy
     respond_to do |format|
       format.html { redirect_to belongs_url, notice: 'Belong was successfully destroyed.' }
       format.json { head :no_content }
@@ -81,6 +82,13 @@ class BelongsController < ApplicationController
     @search_after_date = params["search"]["after_date"]
     if @search_code.present?
       @belongs = @belongs.where("code LIKE '#{@search_code}%'")
+    end
+    if @search_state.present?
+      if @search_state == "廃棄済み"
+        @belongs = @belongs.where("soft_destroyed_at not ?", nil)
+      elsif @search_state == "使用中"
+        @belongs = @belongs.where.not("soft_destroyed_at not ?", nil)
+      end
     end
     if @search_name.present?
       @belongs = @belongs.where("name LIKE '%#{@search_name}%'")

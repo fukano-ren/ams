@@ -56,6 +56,6 @@ gem 'coffee-script-source' , '1.8.0'
 gem 'kaminari'
 
 
-
+gem 'kakurenbo-puti'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'

@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
+
 <div align=right>
-<%= link_to "ログアウト" , controller: :login, action: :index %>
+  <%= link_to "ログアウト" , controller: :login, action: :index %>
 </div>
+
 <h1>資産情報一覧</h1>
 
 <%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
@@ -62,26 +64,52 @@
 
   <tbody>
     <% @belongs.each do |belong| %>
-      <tr>
-        <td align=center height="30"><%= belong.code %></td>
-        <td align=center height="30"><%= belong.name %></td>
-        <td align=center height="30"><%= belong.model %></td>
-        <td align=center height="30"><%= belong.department.try(:name) %></td>
-        <td align=center height="30"><%= belong.user.try(:name) %></td>
-        <td align=center height="30"><%= belong.acquired_on %></td>
-        <td align=center height="30">
-          <%= link_to 'コピー',copy_belong_path(belong),  :method => :post %>
-          <%= link_to '詳細', belong %>
-          <% if session[:system] == true %>
-            <%= link_to '変更', edit_belong_path(belong) %>
-            <%= link_to '削除', belong, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% elsif session[:admin] == true %>
-            <%= link_to '変更', edit_belong_path(belong) %>
-            <%= link_to '削除', belong, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% else %>
-          <% end %>
-        </td>
-      </tr>
+      <% if belong.soft_destroyed_at != nil %>
+        <% if controller.action_name == "search" %>
+          <tr>
+            <td align=center height="30"><%= belong.code %></td>
+            <td align=center height="30"><%= belong.name %></td>
+            <td align=center height="30"><%= belong.model %></td>
+            <td align=center height="30"><%= belong.department.try(:name) %></td>
+            <td align=center height="30"><%= belong.user.try(:name) %></td>
+            <td align=center height="30"><%= belong.acquired_on %></td>
+            <td align=center height="30">
+              <%= link_to 'コピー',copy_belong_path(belong),  :method => :post %>
+              <%= link_to '詳細', belong %>
+              <% if session[:system] == true %>
+                <%= link_to '変更', edit_belong_path(belong) %>
+                <%= link_to '削除', belong, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% elsif session[:admin] == true %>
+                <%= link_to '変更', edit_belong_path(belong) %>
+                <%= link_to '削除', belong, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% else %>
+              <% end %>
+            </td>
+          </tr>
+        <% else %>
+        <% end %>
+      <% else %>
+        <tr>
+          <td align=center height="30"><%= belong.code %></td>
+          <td align=center height="30"><%= belong.name %></td>
+          <td align=center height="30"><%= belong.model %></td>
+          <td align=center height="30"><%= belong.department.try(:name) %></td>
+          <td align=center height="30"><%= belong.user.try(:name) %></td>
+          <td align=center height="30"><%= belong.acquired_on %></td>
+          <td align=center height="30">
+            <%= link_to 'コピー',copy_belong_path(belong),  :method => :post %>
+            <%= link_to '詳細', belong %>
+            <% if session[:system] == true %>
+              <%= link_to '変更', edit_belong_path(belong) %>
+              <%= link_to '削除', belong, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% elsif session[:admin] == true %>
+              <%= link_to '変更', edit_belong_path(belong) %>
+              <%= link_to '削除', belong, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% else %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
