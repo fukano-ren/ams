@@ -41,6 +41,7 @@
   </table>
   <%= submit_tag "検索" %>
 <% end %>
+
 <div style="margin-right:535px">
   <% if controller.action_name == "search" %>
     <%= "検索結果：#{@belongs.count}件" %>
@@ -48,7 +49,9 @@
     <%= "検索結果：0件" %>
   <% end %>
 </div>
+
 <div style="margin-left:535px"><%= paginate @belongs %></div>
+
 <table border="1">
   <thead>
     <tr>
@@ -61,7 +64,6 @@
       <th align=center width="150" height="30"　colspan="4">アクション</th>
     </tr>
   </thead>
-
   <tbody>
     <% @belongs.each do |belong| %>
       <% if belong.soft_destroyed_at != nil %>
@@ -114,7 +116,5 @@
   </tbody>
 </table>
 
-<br>
-
-  <%= link_to '新規資産登録', new_belong_path %>
-  <%= link_to 'メニューに戻る', menu_index_path %>
+<%= link_to '新規資産登録', new_belong_path %>
+<%= link_to 'メニューに戻る', menu_index_path %>

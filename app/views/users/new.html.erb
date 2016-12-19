@@ -1,6 +1,7 @@
 <div align=right>
   <%= link_to "ログアウト" , controller: :login, action: :index %>
 </div>
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -12,7 +13,9 @@
       </ul>
     </div>
   <% end %>
+
   <h1>ユーザー情報登録</h1>
+
   <table border="1">
     <tr>
       <div class="field">

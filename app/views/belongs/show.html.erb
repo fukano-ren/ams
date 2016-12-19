@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
+
 <div align=right>
   <%= link_to "ログアウト" , controller: :login, action: :index %>
 </div>
+
 <h1>資産情報詳細</h1>
 
 <table border="1">
@@ -84,6 +86,7 @@
     </p>
   </tr>
 </table>
+
 <%= link_to '変更する', edit_belong_path(@belong) %> 
 <%= link_to '一覧に戻る', belongs_path %>
 <%= link_to 'メニューに戻る', menu_index_path %>

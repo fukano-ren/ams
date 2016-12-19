@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+
 <div align=right>
   <%= link_to "ログアウト" , controller: :login, action: :index %>
 </div>
@@ -22,6 +23,7 @@
   </table>
   <div><%= submit_tag "検索" %></div>
 <% end %>
+
 <div style="margin-right:535px">
   <% if controller.action_name == "zen_search" %>
     <%= "検索結果：#{@users.count}件" %>
@@ -29,7 +31,9 @@
     <%= "検索結果：0件" %>
   <% end %>
 </div>
-  <div style="margin-left:535px"><%= paginate @users %></div>
+
+<div style="margin-left:535px"><%= paginate @users %></div>
+
 <table border="1">
   <thead>
     <tr>

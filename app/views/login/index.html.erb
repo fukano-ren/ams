@@ -1,28 +1,33 @@
 <h1>資産管理システム</h1>
+
+<p>&nbsp;</p>
+
 <p style="color : Black"><%= @error %></p>
+
 <table border="1">
   <%= form_tag action: :auth do %>
    <tr>
      <div class="field">
-       <td>
+       <td width="110" height="30" align="right" style="padding-right:10px">
          <%= label_tag :code, 'ユーザー' %>
        </td>
-       <td>
+       <td style="padding-right:20px"><div style="padding-left:7px">
          <%= text_field_tag :code, '' %>
-       </td>
+       </div></td>
      </div>
    </tr>
    <tr>
      <div class="field">
-       <td>
+       <td width="110" height="30" align="right" style="padding-right:10px">
          <%= label_tag :password, 'パスワード' %>
        </td>
-       <td>
+       <td style="padding-right:20px"><div style="padding-left:7px">
          <%= password_field_tag :password, '' %>
-       </td>
+       </div></td>
      </div>
    </tr>
 </table>
+
 <%= hidden_field_tag :referer, flash[:referer] %>
 <%= submit_tag 'ログイン' %>
 <% end %>

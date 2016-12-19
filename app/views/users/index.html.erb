@@ -1,28 +1,35 @@
 <% if session[:system] == true %>
   <p id="notice"><%= notice %></p>
-    <div align=right>
-      <%= link_to "ログアウト" , controller: :login, action: :index %>
-    </div>
 
-  <h1>ユーザー情報一覧</h1>
+  <h1>ユーザー情報一覧</h1> 
+
+    <div align=right style="margin-top:-34px"><div style="margin-right:385px">
+      <%= link_to "ログアウト" , controller: :login, action: :index %>
+    </div></div>
+
+  <p>&nbsp;</p>
 
   <%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
     <table border="1">
       <tr>
-        <th>コード</th>
-        <th><%= text_field_tag "search[code]" %></th>
+        <th width="70" height="30" align="right" style="padding-right:15px ">コード</th>
+        <th style="padding-right:15px "><div style="padding-left:7px"><%= text_field_tag "search[code]" %></div></th>
       </tr>
       <tr>
-        <th>氏名</th>
-        <th><%= text_field_tag "search[name]" %></th>
+        <th width="70" height="30" align="right" style="padding-right:15px ">氏 名</th>
+        <th style="padding-right:15px"><div style="padding-left:7px"><%= text_field_tag "search[name]" %></div></th>
       </tr> 
       <tr>
-        <th>部署</th>
-        <th><%= collection_select("search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></th>
+        <th width="70" height="30" align="right" style="padding-right:15px ">部 署</th>
+        <th align="left" style="padding-right:15px "><div style="padding-left:7px"><%= collection_select(
+        "search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></div></th>
       </tr>
     </table>
-    <%= submit_tag "検索" %>
+    <div style="margin-left:315px"><div style="margin-top:-22px"><%= submit_tag "検索" %></div></div>
   <% end %>
+
+  <p>&nbsp;</p>
+  
   <div style="margin-right:535px">
     <% if controller.action_name == "search" %>
       <%= "検索結果：#{@users.count}件" %>
@@ -30,7 +37,7 @@
       <%= "検索結果：0件" %>
     <% end %>
   </div>
-  <div style="margin-left:535px"><%= paginate @users %></div>
+  <div style="margin-left:535px"><div style="margin-top:-20px"><%= paginate @users %></div></div>
   <table border="1">
     <thead>
       <tr>
@@ -72,9 +79,11 @@
     </tbody>
   </table>
 
-  <span align="left"><%= link_to '新規ユーザー登録', new_user_path %></span>
-  <span align="center"><%= link_to '一括変更', users_zen_edit_path %></span>
-  <span align="right"><%= link_to 'メニューに戻る', menu_index_path %></span>
+  <p>&nbsp;</p>
+
+  <div style="margin-right:530px"><%= link_to '新規ユーザー登録', new_user_path %></div>
+  <div align="center" style="margin-top:-17px"><%= link_to '一括変更', users_zen_edit_path %></div>
+  <div style="margin-left:540px"><div style="margin-top:-17px"><%= link_to 'メニューに戻る', menu_index_path %></div></div>
 
 <% else %>
 
@@ -124,6 +133,8 @@
       <% end %>
     </tbody>
   </table>
+
+  <p>&nbsp;</p>
 
   <%= link_to '新規ユーザー登録', new_user_path %>
   <%= link_to 'メニューに戻る', menu_index_path %>

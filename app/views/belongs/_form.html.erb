@@ -22,7 +22,6 @@
         <td align=right width="100" height="30"><%= f.label "コード" %><br></td>
         <td align=left width="200" height="30"><%= f.text_field :code %></td>
       </div>
-
     </tr>
     <tr>
       <div class="field">
@@ -39,13 +38,15 @@
     <tr>
       <div class="field">
         <td align=right width="100" height="30"><%= f.label "管理部署" %><br></td>
-        <td align=left width="200" height="30"><%= f.collection_select(:department_id, Department.all, :id, :name) %></td>
+        <td align=left width="200" height="30">
+        <%= f.collection_select(:department_id, Department.all, :id, :name) %></td>
       </div>
     </tr>
     <tr>
       <div class="field">
         <td align=right width="100" height="30"><%= f.label "主使用者" %><br></td>
-        <td align=left width="200" height="30"><%= f.collection_select(:user_id, User.all, :id, :name) %></td>
+        <td align=left width="200" height="30">
+        <%= f.collection_select(:user_id, User.all, :id, :name) %></td>
       </div>
     </tr>
     <tr>
@@ -57,13 +58,15 @@
     <tr>
       <div class="field">
         <td align=right width="100" height="30"><%= f.label "取得日付" %><br></td>
-        <td align=left width="200" height="30"><%= f.text_field :acquired_on, :class => 'datepicker' %></td>
+        <td align=left width="200" height="30">
+        <%= f.text_field :acquired_on, :class => 'datepicker' %></td>
       </div>
     </tr>
     <tr>
       <div class="field">
         <td align=right width="100" height="30"><%= f.label "廃棄日付" %><br></td>
-        <td align=left width="200" height="30"><%= f.text_field :disponed_on, :class => 'datepicker' %></td>
+        <td align=left width="200" height="30">
+        <%= f.text_field :disponed_on, :class => 'datepicker' %></td>
       </div>
     </tr>
     <tr>
@@ -72,21 +75,23 @@
         <td align=left width="200" height="70"><%= f.text_area :memo %></td>
       </div>
     </tr>
-  <tr>
-    <p>
-      <td width="100" height="30"><div align=right><strong>更新日付</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.updated_at %></div></td>
-    </p>
-  </tr>
-  <tr>
-    <p>
-      <td width="100" height="30"><div align=right><strong>登録日付</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.created_at %></div></td>
-    </p>
-  </tr>
+    <tr>
+      <p>
+        <td width="100" height="30"><div align=right><strong>更新日付</strong></div></td>
+        <td width="200" height="30"><div align=left><%= @belong.updated_at %></div></td>
+      </p>
+    </tr>
+    <tr>
+      <p>
+        <td width="100" height="30"><div align=right><strong>登録日付</strong></div></td>
+        <td width="200" height="30"><div align=left><%= @belong.created_at %></div></td>
+      </p>
+    </tr>
   </table>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
 <%= button_to 'キャンセル', belongs_path, method: :get %>

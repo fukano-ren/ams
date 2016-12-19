@@ -1,7 +1,8 @@
 <%= form_for(@belong) do |f| %>
   <% if @belong.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@belong.errors.count, "error") %> prohibited this belong from being saved:</h2>
+      <h2><%= pluralize(@belong.errors.count, "error") %>
+       prohibited this belong from being saved:</h2>
 
       <ul>
       <% @belong.errors.full_messages.each do |message| %>
