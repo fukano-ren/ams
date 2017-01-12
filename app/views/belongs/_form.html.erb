@@ -10,88 +10,90 @@
     </div>
   <% end %>
 
+  <p>&nbsp;</p>
+
   <table border="1">
     <tr>
       <p>
-        <td><div align=right><strong>ID</strong></div></td>
-        <td><div align=left><%= params[:id] %></div></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><strong>ID</strong></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= params[:id] %></div></td>
       </p>
     </tr>
     <tr>
       <div class="field">
-        <td align=right width="100" height="30"><%= f.label "コード" %><br></td>
-        <td align=left width="200" height="30"><%= f.text_field :code %></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><%= f.label "コード" %><br></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= f.text_field :code %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td align=right width="100" height="30"><%= f.label "品名" %><br></td>
-        <td align=left width="200" height="30"><%= f.text_field :name %></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><%= f.label "品名" %><br></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= f.text_field :name %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td align=right width="100" height="30"><%= f.label "型番" %><br></td>
-        <td align=left width="200" height="30"><%= f.text_field :model %></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><%= f.label "型番" %><br></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= f.text_field :model %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td align=right width="100" height="30"><%= f.label "管理部署" %><br></td>
-        <td align=left width="200" height="30">
-        <%= f.collection_select(:department_id, Department.all, :id, :name) %></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><%= f.label "管理部署" %><br></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px">
+        <%= f.collection_select(:department_id, Department.all, :id, :name) %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td align=right width="100" height="30"><%= f.label "主使用者" %><br></td>
-        <td align=left width="200" height="30">
-        <%= f.collection_select(:user_id, User.all, :id, :name) %></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><%= f.label "主使用者" %><br></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px">
+        <%= f.collection_select(:user_id, User.all, :id, :name) %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td align=right width="100" height="30"><%= f.label "設置場所" %><br></td>
-        <td align=left width="200" height="30"><%= f.text_field :set %></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><%= f.label "設置場所" %><br></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= f.text_field :set %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td align=right width="100" height="30"><%= f.label "取得日付" %><br></td>
-        <td align=left width="200" height="30">
-        <%= f.text_field :acquired_on, :class => 'datepicker' %></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><%= f.label "取得日付" %><br></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px">
+        <%= f.text_field :acquired_on, :class => 'datepicker' %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td align=right width="100" height="30"><%= f.label "廃棄日付" %><br></td>
-        <td align=left width="200" height="30">
-        <%= f.text_field :disponed_on, :class => 'datepicker' %></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><%= f.label "廃棄日付" %><br></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px">
+        <%= f.text_field :disponed_on, :class => 'datepicker' %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td align=right width="100" height="30"><%= f.label "備考" %><br></td>
-        <td align=left width="200" height="70"><%= f.text_area :memo %></td>
+        <td width="150" height="130" style="padding-right:15px"><div align=right><%= f.label "備考" %><br></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= f.text_area :memo, :size => "19x10" %></div></td>
       </div>
     </tr>
     <tr>
       <p>
-        <td width="100" height="30"><div align=right><strong>更新日付</strong></div></td>
-        <td width="200" height="30"><div align=left><%= @belong.updated_at %></div></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><strong>更新日付</strong></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.updated_at %></div></td>
       </p>
     </tr>
     <tr>
       <p>
-        <td width="100" height="30"><div align=right><strong>登録日付</strong></div></td>
-        <td width="200" height="30"><div align=left><%= @belong.created_at %></div></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><strong>登録日付</strong></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.created_at %></div></td>
       </p>
     </tr>
   </table>
 
   <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div style="margin-right:90px"><div style="margin-top:17px"><%= f.submit %>
+  </div></div>
 <% end %>
 
-<%= button_to 'キャンセル', belongs_path, method: :get %>
+<div style="margin-left:110px"><div style="margin-top:-20px"><%= button_to 'キャンセル', belongs_path, method: :get %></div></div>

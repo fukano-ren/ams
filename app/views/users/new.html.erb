@@ -1,64 +1,67 @@
-<div align=right>
+  <div align=right style="margin-right:385px">
   <%= link_to "ログアウト" , controller: :login, action: :index %>
 </div>
 
 <%= form_for(@user) do |f| %>
+
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
       <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>
 
-  <h1>ユーザー情報登録</h1>
+  <h1 style="margin-top:-17px">ユーザー情報登録</h1>
+
+  <p>&nbsp;</p>
 
   <table border="1">
     <tr>
       <div class="field">
-        <td><%= f.label :コード %><br></td>
-        <td><%= f.text_field :code %></td>
+        <td align=right width="130" height="30" style="padding-right:15px"><%= f.label :コード %><br></td>
+        <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.text_field :code %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td><%= f.label :氏名 %><br></td>
-        <td><%= f.text_field :name %></td>
+        <td align=right width="130" height="30" style="padding-right:15px"><%= f.label :氏名 %><br></td>
+        <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.text_field :name %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td><%= f.label :パスワード %><br></td>
-        <td><%= f.text_field :password %></td>
+        <td align=right width="130" height="30" style="padding-right:15px"><%= f.label :パスワード %><br></td>
+        <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.text_field :password %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td><%= f.label :所属部署 %><br></td>
-        <td><%= f.collection_select(:department_id, Department.all, :id, :name) %></td>
+        <td align=right width="130" height="30" style="padding-right:15px"><%= f.label :所属部署 %><br></td>
+        <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.collection_select(:department_id, Department.all, :id, :name) %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td><%= f.label :システム管理権限 %><br></td>
-        <td><%= f.check_box :system %></td>
+        <td align=right width="130" height="30" style="padding-right:15px"><%= f.label :システム管理権限 %><br></td>
+        <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.check_box :system %></div></td>
       </div>
     </tr>
     <tr>
       <div class="field">
-        <td><%= f.label :資産管理権限 %><br></td>
-        <td><%= f.check_box :admin %></td>
+        <td align=right width="130" height="30" style="padding-right:15px"><%= f.label :資産管理権限 %><br></td>
+        <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.check_box :admin %></div></td>
       </div>
     </tr>
   </table>
 
   <span class="actions">
-    <%= f.submit :登録%>
+    <div style="margin-right:90px"><div style="margin-top:17px"><%= f.submit :登録%></div></div>
   </span>
 <% end %>
 
-<span><%= button_to 'キャンセル', users_path, method: :get %></span>
-<%= link_to 'メニューに戻る', menu_index_path %>
+<div style="margin-left:110px"><div style="margin-top:-20px"><%= button_to 'キャンセル', users_path, method: :get %></div></div>
+<div style="margin-left:540px"><div style="margin-top:17px"><%= link_to 'メニューに戻る', menu_index_path %></div></div>

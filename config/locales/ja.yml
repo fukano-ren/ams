@@ -18,7 +18,8 @@ ja:
         email: メールアドレス
         salon_id: サロン
         password: パスワード
-        password_confirmation: 確認パスワード
+        password confirmation: 確認パスワード
+
   date:
     abbr_day_names:
     - 日

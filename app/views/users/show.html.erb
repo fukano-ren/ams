@@ -1,97 +1,99 @@
-<div align=right>
+<div align=right style="margin-right:385px">
   <%= link_to "ログアウト" , controller: :login, action: :index %>
 </div>
 
 <p id="notice"><%= notice %></p>
 
-<h1>ユーザー情報詳細</h1>
+<h1 style="margin-top:-17px">ユーザー情報詳細</h1>
+
+<p>&nbsp;</p>
 
 <table border="1">
   <tr>
     <p>
-      <td><div align=right><strong>ID</strong></div></td>
-      <td><div align=left><%= params[:id] %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>ID</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= params[:id] %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td><div align=right><strong>コード</strong></div></td>
-      <td><div align=left><%= @user.code %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>コード</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @user.code %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td><div align=right><strong>氏名</strong></div></td>
-      <td><div align=left><%= @user.name %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>氏名</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @user.name %></div></td>
     </p>
   </tr>
   <tr>
     <% if session[:system] == true %>
       <p>
-        <td><div align=right><strong>パスワード:</strong></div></td>
-        <td><div align=left><%= @user.password%></div></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><strong>パスワード:</strong></div></td>
+        <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @user.password%></div></td>
       </p>
     <% else %>
       <p>
-        <td><div align=right><strong>パスワード:</strong></div></td>
-        <td><div align=left><%= @user.password.gsub(/\S/,"●") %></div></td>
+        <td width="150" height="30" style="padding-right:15px"><div align=right><strong>パスワード:</strong></div></td>
+        <<td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @user.password.gsub(/\S/,"●") %></div></td>
       </p>
     <% end %>
   </tr>
   <tr>
     <p>
-      <td><div align=right><strong>所属部署:</strong></div></td>
-      <td><div align=left><%= @user.department_id %>:<%= @user.department.try(:name) %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>所属部署:</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @user.department_id %>:<%= @user.department.try(:name) %></div></td>
     </p>
   </tr>
   <% if session[:system] == true %>
     <% if @user.system == true %>
       <tr>
         <p>
-          <td><div align=right><strong>システム管理権限:</strong></div></td>
-          <td><div align=left><%= "○" %></div></td>
+          <td width="150" height="30" style="padding-right:15px"><div align=right><strong>システム管理権限:</strong></div></td>
+          <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= "○" %></div></td>
         </p>
       </tr>
     <% else %>
       <tr>
         <p>
-          <td><div align=right><strong>システム管理権限:</strong></div></td>
-          <td><div align=left><%= "×" %></div></td>
+          <td width="150" height="30" style="padding-right:15px"><div align=right><strong>システム管理権限:</strong></div></td>
+          <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= "×" %></div></td>
         </p>
       </tr>
     <% end %>
     <% if @user.admin == true %>
       <tr>
         <p>
-          <td><div align=right><strong>資産管理権限:</strong></div></td>
-          <td><div align=left><%= "○" %></div></td>
+          <td width="150" height="30" style="padding-right:15px"><div align=right><strong>資産管理権限:</strong></div></td>
+          <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= "○" %></div></td>
         </p>
       </tr>
     <% else %>
       <tr>
         <p>
-          <td><div align=right><strong>資産管理権限:</strong></div></td>
-          <td><div align=left><%= "×" %></div></td>
+          <td width="150" height="30" style="padding-right:15px"><div align=right><strong>資産管理権限:</strong></div></td>
+          <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= "×" %></div></td>
         </p>
       </tr>
     <% end %>
   <% end %>
   <tr>
     <p>
-      <td><div align=right><strong>更新日時</strong></div></td>
-      <td><div align=left><%= @user.updated_at %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>更新日時</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @user.updated_at %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td><div align=right><strong>登録日時:</strong></div></td>
-      <td><div align=left><%= @user.created_at %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>登録日時:</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @user.created_at %></div></td>
     </p>
   </tr>
 </table>
 
-<span>
-<%= link_to '変更する', edit_user_path(@user) %> 
-<%= link_to '一覧に戻る', users_path %>
-<%= link_to 'メニューに戻る', menu_index_path %>
-</span>
+<p>&nbsp;</p>
+
+<div style="margin-right:530px"><%= link_to '変更する', edit_user_path(@user) %></div>
+<div align="center" style="margin-top:-17px"><%= link_to '一覧に戻る', users_path %></div>
+<div style="margin-left:540px"><div style="margin-top:-17px"><%= link_to 'メニューに戻る', menu_index_path %></div></div>

@@ -12,60 +12,67 @@
     </div>
   <% end %>
 
-  <h1>資産情報登録</h1>
+  <div align=right style="margin-right:385px">
+    <%= link_to "ログアウト" , controller: :login, action: :index %>
+  </div>
+
+  <h1 style="margin-top:-17px">資産情報登録</h1>
+
+  <p>&nbsp;</p>
 
 	<table border="1">
 	  <tr>
 	    <div class="field">
-	      <td><%= f.label "コード" %><br></td>
-	      <td><%= f.text_field :code %></td>
+	      <td align=right width="130" height="30" style="padding-right:15px"><%= f.label "コード" %><br></td>
+	      <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.text_field :code %></div></td>
 	    </div>
       </tr>
       <tr>
 	    <div class="field">
-	      <td><%= f.label "品名" %><br></td>
-	      <td><%= f.text_field :name %></td>
+	      <td align=right width="130" height="30" style="padding-right:15px"><%= f.label "品名" %><br></td>
+	      <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.text_field :name %></div></td>
 	    </div>
       </tr>
       <tr>
 	    <div class="field">
-	      <td><%= f.label "型番" %><br></td>
-	      <td><%= f.text_field :model %></td>
+	      <td align=right width="170" height="30" style="padding-right:15px"><%= f.label "型番" %><br></td>
+	      <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.text_field :model %></div></td>
 	    </div>
       </tr>
       <tr>
 	    <div class="field">
-	      <td><%= f.label "管理部署" %><br></td>
-	      <td><%= f.collection_select(:department_id, Department.all, :id, :name, :prompt => "") %></td>
+	      <td align=right width="170" height="30" style="padding-right:15px"><%= f.label "管理部署" %><br></td>
+	      <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.collection_select(:department_id, Department.all, :id, :name, :prompt => "") %></div></td>
 	    </div>
       </tr>
       <tr>
 	    <div class="field">
-	      <td><%= f.label "主使用者" %><br></td>
-	      <td><%= f.collection_select(:user_id, User.all, :id, :name, :prompt => "") %></td>
+	      <td align=right width="170" height="30" style="padding-right:15px"><%= f.label "主使用者" %><br></td>
+	      <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.collection_select(:user_id, User.all, :id, :name, :prompt => "") %></div></td>
 	    </div>
       </tr>
       <tr>
 	    <div class="field">
-          <td><%= f.label "設置場所" %><br></td>
-	      <td><%= f.text_field :set %></td>
+          <td align=right width="170" height="30" style="padding-right:15px"><%= f.label "設置場所" %><br></td>
+	      <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.text_field :set %></div></td>
 	    </div>
       </tr>
       <tr>
 	    <div class="field">
-	      <td><%= f.label "取得日付" %><br></td>
-	      <td><%= f.text_field :acquired_on, :class => 'datepicker' %></td>
+	      <td align=right width="170" height="30" style="padding-right:15px"><%= f.label "取得日付" %><br></td>
+	      <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.text_field :acquired_on, :class => 'datepicker' %></div></td>
 	    </div>
       </tr>
       <tr>
 	    <div class="field">
-	      <td><%= f.label "備考" %><br></td>
-	      <td><%= f.text_area :memo %></td>
+	      <td align=right width="170" height="130" style="padding-right:15px"><%= f.label "備考" %><br></td>
+	      <td align=left width="130" height="30" style="padding-right:15px "><div style="padding-left:7px"><%= f.text_area :memo, :size => "19x10" %></div></td>
 	    </div>
       </tr>
     </table>
 	<span class="actions">
-	  <%= f.submit "登録" %>
+	  <div style="margin-right:90px"><div style="margin-top:17px"><%= f.submit "登録" %></div></div>
 	</span>
   <% end %>
-  <span><%= button_to 'キャンセル', belongs_path, method: :get %></span>
+  <div style="margin-left:110px"><div style="margin-top:-20px"><%= button_to 'キャンセル', belongs_path, method: :get %></div></div>
+   <div style="margin-left:540px"><div style="margin-top:17px"><%= link_to 'メニューに戻る', menu_index_path %></div></div>

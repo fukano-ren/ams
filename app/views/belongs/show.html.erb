@@ -1,92 +1,90 @@
 <p id="notice"><%= notice %></p>
 
-<div align=right>
+<div align=right style="margin-right:385px">
   <%= link_to "ログアウト" , controller: :login, action: :index %>
 </div>
 
-<h1>資産情報詳細</h1>
+<h1 style="margin-top:-17px">資産情報詳細</h1>
+
+<p>&nbsp;</p>
 
 <table border="1">
   <tr>
     <p>
-      <td width="100" height="30"><div align=right><strong>ID</strong></div></td>
-      <td width="200" height="30"><div align=left><%= params[:id] %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>ID</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= params[:id] %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td width="100" height="30"><div align=right><strong>コード</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.code %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>コード</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.code %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td width="100" height="30"><div align=right><strong>品名</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.name %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>品名</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.name %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td width="100" height="30"><div align=right><strong>型番</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.model %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>型番</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.model %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td width="100" height="30"><div align=right><strong>管理部署</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.department_id %>:<%= @belong.department.try(:name) %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>管理部署</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.department_id %>:<%= @belong.department.try(:name) %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td width="100" height="30"><div align=right><strong>主使用者</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.user.try(:name) %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>主使用者</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.user.try(:name) %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td width="100" height="30"><div align=right><strong>設置場所</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.set %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>設置場所</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.set %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td width="100" height="30"><div align=right><strong>取得日付</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.acquired_on %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>取得日付</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.acquired_on %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td width="100" height="30"><div align=right><strong>廃棄日付</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.disponed_on %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>廃棄日付</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.disponed_on %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td width="100" height="130"><div align=right><strong>備考</strong></div></td>
-      <td width="200" height="130"><div align=left><%= @belong.memo %></div></td>
+      <td width="150" height="130" style="padding-right:15px"><div align=right><strong>備考</strong></div></td>
+      <td width="200" height="130" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.memo %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td width="100" height="30"><div align=right><strong>あああ</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.delete_flg %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>更新日付</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.updated_at %></div></td>
     </p>
   </tr>
   <tr>
     <p>
-      <td width="100" height="30"><div align=right><strong>更新日付</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.updated_at %></div></td>
-    </p>
-  </tr>
-  <tr>
-    <p>
-      <td width="100" height="30"><div align=right><strong>登録日付</strong></div></td>
-      <td width="200" height="30"><div align=left><%= @belong.created_at %></div></td>
+      <td width="150" height="30" style="padding-right:15px"><div align=right><strong>登録日付</strong></div></td>
+      <td width="200" height="30" style="padding-right:15px"><div align=left style="padding-left:7px"><%= @belong.created_at %></div></td>
     </p>
   </tr>
 </table>
 
-<%= link_to '変更する', edit_belong_path(@belong) %> 
-<%= link_to '一覧に戻る', belongs_path %>
-<%= link_to 'メニューに戻る', menu_index_path %>
+<p>&nbsp;</p>
+
+<div style="margin-right:530px"><%= link_to '変更する', edit_belong_path(@belong) %> </div>
+<div align="center" style="margin-top:-17px"><%= link_to '一覧に戻る', belongs_path %></div>
+<div style="margin-left:540px"><div style="margin-top:-17px"><%= link_to 'メニューに戻る', menu_index_path %></div></div>

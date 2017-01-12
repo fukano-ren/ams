@@ -13,4 +13,10 @@ class User < ActiveRecord::Base
       return
     end
   end
+
+
+  validates :password, presence: true
+  validates :code, presence: true
+  validates :name, presence: true
+  validates :code, uniqueness: true
 end
