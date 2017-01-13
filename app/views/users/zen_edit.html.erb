@@ -1,5 +1,16 @@
 <p id="notice"><%= notice %></p>
-
+ <% if action_name == "zen_update" %>
+ <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% end %>
 <div align=right>
   <%= link_to "ログアウト" , controller: :login, action: :index %>
 </div>
@@ -10,7 +21,7 @@
   <table border="1">
     <tr>
       <th>コード</th>
-      <th><%= text_field_tag "search[code]" %></th>
+      <th><%= text_field_tag 'session[:code]' %></th>
     </tr>
     <tr>
       <th>氏名</th>
@@ -33,7 +44,8 @@
 </div>
 
 <div style="margin-left:535px"><%= paginate @users %></div>
-
+<%= form_tag users_zen_update_path,method: :put do %>
+<%= submit_tag '更新' %>
 <table border="1">
   <thead>
     <tr>
@@ -46,7 +58,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= form_tag users_zen_update_path,method: :put do %>
+    
       <% @users.each do |user| %>
         <%= fields_for "users[]" ,user do |f| %>
           <tr>
@@ -59,10 +71,11 @@
           </tr>
         <% end %>
       <% end %>
-      <%= submit_tag '更新' %>
-    <% end %>
+      
+   
   </tbody>
 </table>
+ <% end %>
 <br>
 <div align="left"><%= link_to '一覧に戻る', users_path %></div>
 <div align="right"><%= link_to 'メニューに戻る', menu_index_path %></div>
