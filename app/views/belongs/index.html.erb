@@ -1,34 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<div align=right>
-  <%= link_to "ログアウト" , controller: :login, action: :index %>
-</div>
-
 <h1>資産情報一覧</h1>
+
+    <div align=right style="margin-top:-34px"><div style="margin-right:385px">
+      <%= link_to "ログアウト" , controller: :login, action: :index %>
+    </div></div>
+
+  <p>&nbsp;</p>
+
 
 <%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
   <table border="1">
     <tr>
-      <th>コード</th>
-      <th><%= text_field_tag "search[code]" %></th>
-      <th>状態</th>
-      <th><%= select "search","state",["すべて","使用中","廃棄済み"] %></th>
+      <th width="70" height="30" align="right" style="padding-right:15px ">コード</th>
+      <th style="padding-right:15px"><div style="padding-left:7px"><%= text_field_tag "search[code]" %></div></th>
+      <th width="70" height="30" align="right" style="padding-right:15px ">状態</th>
+      <th style="padding-right:15px"><div style="padding-left:7px"><%= select "search","state",["すべて","使用中","廃棄済み"] %></div></th>
     </tr>
     <tr>
-      <th>品名</th>
-      <th><%= text_field_tag "search[name]" %></th>
-      <th>型番</th>
-      <th><%= text_field_tag "search[model]" %></th>
+      <th width="70" height="30" align="right" style="padding-right:15px ">品名</th>
+      <th style="padding-right:15px"><div style="padding-left:7px"><%= text_field_tag "search[name]" %></div></th>
+      <th width="70" height="30" align="right" style="padding-right:15px ">型番</th>
+      <th style="padding-right:15px"><div style="padding-left:7px"><%= text_field_tag "search[model]" %></div></th>
     </tr> 
     <tr>
-      <th>部署</th>
-      <th><%= collection_select("search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></th>
-      <th>使用者</th>
-      <th><%= collection_select("search", "user_id", User.all, :id, :name, :prompt => "") %></th>
+      <th width="70" height="30" align="right" style="padding-right:15px ">部署</th>
+      <th style="padding-right:15px"><div style="padding-left:7px"><%= collection_select("search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></div></th>
+      <th width="70" height="30" align="right" style="padding-right:15px ">使用者</th>
+      <th style="padding-right:15px"><div style="padding-left:7px"><%= collection_select("search", "user_id", User.all, :id, :name, :prompt => "") %></div></th>
     </tr>
     <tr>
-      <th>取得日付</th>
-      <th>
+      <th width="70" height="30" align="right" style="padding-right:15px ">取得日付</th>
+      <th colspan="3" align="left" style="padding-right:15px"><div style="padding-left:7px">
       <div class="field">
         <%= text_field "search", "before_date", :class => 'datepicker' %>
       
@@ -36,32 +39,35 @@
       
         <%= text_field "search", "after_date", :class => 'datepicker' %>
       </div>
+      </div>
       </th>
     </tr>
   </table>
-  <%= submit_tag "検索" %>
-<% end %>
-
-<div style="margin-right:535px">
-  <% if controller.action_name == "search" %>
-    <%= "検索結果：#{@belongs.count}件" %>
-  <% else %>
-    <%= "検索結果：0件" %>
+    <div style="margin-left:615px"><div style="margin-top:-22px"><%= submit_tag "検索" %></div></div>
   <% end %>
-</div>
 
-<div style="margin-left:535px"><%= paginate @belongs %></div>
+  <p>&nbsp;</p>
+  
+  <div style="margin-right:650px">
+    <% if controller.action_name == "search" %>
+      <%= "検索結果：#{@belongs.count}件" %>
+    <% else %>
+      <%= "検索結果：0件" %>
+    <% end %>
+  </div>
 
-<table border="1">
+  <div style="margin-left:620px"><div style="margin-top:-20px"><%= paginate @belongs %></div></div>
+
+<table border="1" style="margin-top: 20px">
   <thead>
     <tr>
-      <th align=center width="70" height="30">コード</th>
-      <th align=center width="100" height="30">品名</th>
-      <th align=center width="100" height="30">型番</th>
-      <th align=center width="100" height="30">部署</th>
-      <th align=center width="100" height="30">使用者</th>
-      <th align=center width="120" height="30">取得日</th>
-      <th align=center width="150" height="30"　colspan="4">アクション</th>
+      <th align=center width="70" height="30" bgcolor="#e6e6e6">コード</th>
+      <th align=center width="100" height="30" bgcolor="#e6e6e6">品名</th>
+      <th align=center width="100" height="30" bgcolor="#e6e6e6">型番</th>
+      <th align=center width="100" height="30" bgcolor="#e6e6e6">部署</th>
+      <th align=center width="100" height="30" bgcolor="#e6e6e6">使用者</th>
+      <th align=center width="120" height="30" bgcolor="#e6e6e6">取得日</th>
+      <th align=center width="150" height="30"　colspan="4" bgcolor="#e6e6e6">アクション</th>
     </tr>
   </thead>
   <tbody>
@@ -99,12 +105,12 @@
           <td align=center height="30"><%= belong.user.try(:name) %></td>
           <td align=center height="30"><%= belong.acquired_on %></td>
           <td align=center height="30">
-            <%= link_to 'コピー',copy_belong_path(belong),  :method => :post %>
+            <% if session[:system] == true || session[:admin] == true %>
+              <%= link_to 'コピー',copy_belong_path(belong),  :method => :post %>
+            <% else %>
+            <% end %>
             <%= link_to '詳細', belong %>
-            <% if session[:system] == true %>
-              <%= link_to '変更', edit_belong_path(belong) %>
-              <%= link_to '削除', belong, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% elsif session[:admin] == true %>
+            <% if session[:system] == true || session[:admin] == true %>
               <%= link_to '変更', edit_belong_path(belong) %>
               <%= link_to '削除', belong, method: :delete, data: { confirm: 'Are you sure?' } %>
             <% else %>
@@ -116,5 +122,10 @@
   </tbody>
 </table>
 
-<%= link_to '新規資産登録', new_belong_path %>
-<%= link_to 'メニューに戻る', menu_index_path %>
+  <p>&nbsp;</p>
+  <% if session[:system] == true || session[:admin] == true %>
+    <div style="margin-right:630px"><%= link_to '新規資産登録', new_belong_path %></div>
+    <div style="margin-left:640px"><div style="margin-top:-17px"><%= link_to 'メニューに戻る', menu_index_path %></div></div>
+  <% else %>
+    <div align="center"><div style="margin-top:-17px"><%= link_to 'メニューに戻る', menu_index_path %></div></div>
+  <% end %>

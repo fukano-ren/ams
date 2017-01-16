@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
   validates :password, presence: true
   validates :code, presence: true
   validates :name, presence: true

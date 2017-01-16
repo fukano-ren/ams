@@ -103,34 +103,34 @@ class UsersController < ApplicationController
  
   def search 
     @users = User.page(params[:page])
-    session[:code] = params["search"]["code"]
-    session[:name] = params["search"]["name"]
-    session[:department_id] = params["search"]["department_id"]
-    if session[:code].present?
-      @users = @users.where("code LIKE '#{session[:code]}%'")
+    session[:code_s] = params["search"]["code"]
+    session[:name_s] = params["search"]["name"]
+    session[:department_id_s] = params["search"]["department_id"]
+    if session[:code_s].present?
+      @users = @users.where("code LIKE '#{session[:code_s]}%'")
     end
-    if session[:name].present?
-      @users = @users.where("name LIKE '%#{session[:name]}%'")
+    if session[:name_s].present?
+      @users = @users.where("name LIKE '%#{session[:name_s]}%'")
     end
-    if session[:department_id].present?
-      @users = @users.where("department_id LIKE '#{session[:department_id]}'")
+    if session[:department_id_s].present?
+      @users = @users.where("department_id LIKE '#{session[:department_id_s]}'")
     end
     render :index
   end
 
   def zen_search 
     @users = User.page(params[:page])
-    session[:code] = params["search"]["code"]
-    session[:name] = params["search"]["name"]
-    session[:department_id] = params["search"]["department_id"]
-    if session[:code].present?
-      @users = @users.where("code LIKE '#{session[:code]}%'")
+    session[:code_z] = params["search"]["code"]
+    session[:name_z] = params["search"]["name"]
+    session[:department_id_z] = params["search"]["department_id"]
+    if session[:code_z].present?
+      @users = @users.where("code LIKE '#{session[:code_z]}%'")
     end
-    if session[:name].present?
-      @users = @users.where("name LIKE '%#{session[:name]}%'")
+    if session[:name_z].present?
+      @users = @users.where("name LIKE '%#{session[:name_z]}%'")
     end
-    if session[:department_id].present?
-      @users = @users.where("department_id LIKE '#{session[:department_id]}'")
+    if session[:department_id_z].present?
+      @users = @users.where("department_id LIKE '#{session[:department_id_z]}'")
     end
     render :zen_edit
   end

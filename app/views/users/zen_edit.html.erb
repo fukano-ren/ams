@@ -11,50 +11,55 @@
     </div>
   <% end %>
   <% end %>
-<div align=right>
-  <%= link_to "ログアウト" , controller: :login, action: :index %>
-</div>
 
 <h1>ユーザー情報一括変更</h1>
 
-<%= form_tag({:action=>"zen_search"},{:method=>"GET"}) do %>
-  <table border="1">
-    <tr>
-      <th>コード</th>
-      <th><%= text_field_tag 'session[:code]' %></th>
-    </tr>
-    <tr>
-      <th>氏名</th>
-      <th><%= text_field_tag "search[name]" %></th>
-    </tr> 
-    <tr>
-      <th>部署</th>
-      <th><%= collection_select("search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></th>
-    </tr>
-  </table>
-  <div><%= submit_tag "検索" %></div>
-<% end %>
+    <div align=right style="margin-top:-34px"><div style="margin-right:385px">
+      <%= link_to "ログアウト" , controller: :login, action: :index %>
+    </div></div>
 
-<div style="margin-right:535px">
-  <% if controller.action_name == "zen_search" %>
-    <%= "検索結果：#{@users.count}件" %>
-  <% else %>
-    <%= "検索結果：0件" %>
+  <p>&nbsp;</p>
+
+  <%= form_tag({:action=>"zen_search"},{:method=>"GET"}) do %>
+    <table border="1">
+      <tr>
+        <th width="70" height="30" align="right" style="padding-right:15px ">コード</th>
+        <th style="padding-right:15px "><div style="padding-left:7px"><%= text_field_tag "search[code]" %></div></th>
+      </tr>
+      <tr>
+        <th width="70" height="30" align="right" style="padding-right:15px ">氏 名</th>
+        <th style="padding-right:15px"><div style="padding-left:7px"><%= text_field_tag "search[name]" %></div></th>
+      </tr> 
+      <tr>
+        <th width="70" height="30" align="right" style="padding-right:15px ">部 署</th>
+        <th align="left" style="padding-right:15px "><div style="padding-left:7px"><%= collection_select(
+        "search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></div></th>
+      </tr>
+    </table>
+    <div style="margin-left:315px"><div style="margin-top:-22px"><%= submit_tag "検索" %></div></div>
   <% end %>
-</div>
 
-<div style="margin-left:535px"><%= paginate @users %></div>
+  <p>&nbsp;</p>
+  
+  <div style="margin-right:670px">
+    <% if controller.action_name == "search" %>
+      <%= "検索結果：#{@users.count}件" %>
+    <% else %>
+      <%= "検索結果：0件" %>
+    <% end %>
+  </div>
+  <div style="margin-left:635px"><div style="margin-top:-20px"><%= paginate @users %></div></div>
 <%= form_tag users_zen_update_path,method: :put do %>
-<%= submit_tag '更新' %>
-<table border="1">
+
+<table border="1" style="margin-top: 20px">
   <thead>
     <tr>
-      <th align=center width="70" height="30">コード</th>
-      <th align=center width="70" height="30">氏名</th>
-      <th align=center width="70" height="30">パスワード</th>
-      <th align=center width="70" height="30">部署</th>
-      <th align=center width="70" height="30">システム管理</th>
-      <th align=center width="70" height="30">資産管理</th>
+      <th align=center width="70" height="30" bgcolor="#e6e6e6">コード</th>
+      <th align=center width="70" height="30" bgcolor="#e6e6e6">氏名</th>
+      <th align=center width="70" height="30" bgcolor="#e6e6e6">パスワード</th>
+      <th align=center width="110" height="30" bgcolor="#e6e6e6">部署</th>
+      <th align=center width="110" height="30" bgcolor="#e6e6e6">システム管理</th>
+      <th align=center width="70" height="30" bgcolor="#e6e6e6">資産管理</th>
     </tr>
   </thead>
   <tbody>
@@ -71,11 +76,10 @@
           </tr>
         <% end %>
       <% end %>
-      
-   
   </tbody>
 </table>
+  <p>&nbsp;</p>
+<%= submit_tag '更新' %>
  <% end %>
-<br>
-<div align="left"><%= link_to '一覧に戻る', users_path %></div>
-<div align="right"><%= link_to 'メニューに戻る', menu_index_path %></div>
+  <div style="margin-right:630px"><%= link_to '一覧に戻る', users_path %></div>
+  <div style="margin-left:640px"><div style="margin-top:-17px"><%= link_to 'メニューに戻る', menu_index_path %></div></div>
