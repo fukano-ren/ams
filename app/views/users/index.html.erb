@@ -1,16 +1,7 @@
 <% if session[:system] == true %>
 
   <p id="notice"><%= notice %></p>
- <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<p style="color : Black"><%= @error %></p>
 
   <h1>ユーザー情報一覧</h1> 
 
@@ -24,17 +15,18 @@
     <table border="1">
       <tr>
         <th width="70" height="30" align="right" style="padding-right:15px ">コード</th>
-        <th style="padding-right:15px "><div style="padding-left:7px"><%= text_field_tag "search[code]" %></div></th>
+        <th style="padding-right:15px "><div style="padding-left:7px"><%= text_field_tag "search[code]" , session[:code_s] %></div></th>
       </tr>
       <tr>
         <th width="70" height="30" align="right" style="padding-right:15px ">氏 名</th>
-        <th style="padding-right:15px"><div style="padding-left:7px"><%= text_field_tag "search[name]" %></div></th>
+        <th style="padding-right:15px"><div style="padding-left:7px"><%= text_field_tag "search[name]" , session[:name_s]%></div></th>
       </tr> 
       <tr>
         <th width="70" height="30" align="right" style="padding-right:15px ">部 署</th>
         <th align="left" style="padding-right:15px "><div style="padding-left:7px"><%= collection_select(
         "search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></div></th>
       </tr>
+      <%= hidden_field_tag "sw" , "search" %>
     </table>
     <div style="margin-left:315px"><div style="margin-top:-22px"><%= submit_tag "検索" %></div></div>
   <% end %>

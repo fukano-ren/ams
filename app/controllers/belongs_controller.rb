@@ -102,6 +102,12 @@ class BelongsController < ApplicationController
     if @search_department_id.present?
       @belongs = @belongs.where("department_id LIKE '#{@search_department_id}'")
     end
+    if @search_before_date.present?
+      @belongs = @belongs.where("acquired_on >= ?", Date.parse(@search_before_date))
+    end
+    if @search_after_date.present?
+      @belongs = @belongs.where("acquired_on <= ?", Date.parse(@search_after_date))
+    end
 
     render :index
   end

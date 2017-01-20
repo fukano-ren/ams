@@ -5,11 +5,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.page(params[:page])
+    @users = search_obj
   end
 
   def zen_edit
     @users = User.page(params[:page])
+    session[:code_s] = nil
+    session[:name_s] = nil
+    session[:department_id_s] = nil
   end
   
   # GET /users/1
@@ -93,45 +96,27 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: '削除しました' }
-      format.json { head :no_content }
+    if session[:name] == @user.name
+      @users = User.page(params[:page]) 
+      @error = 'ログイン中のユーザーです'
+      render :index
+    else  
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: '削除しました' }
+        format.json { head :no_content }
+      end
     end
   end
-
  
   def search 
-    @users = User.page(params[:page])
-    session[:code_s] = params["search"]["code"]
-    session[:name_s] = params["search"]["name"]
-    session[:department_id_s] = params["search"]["department_id"]
-    if session[:code_s].present?
-      @users = @users.where("code LIKE '#{session[:code_s]}%'")
-    end
-    if session[:name_s].present?
-      @users = @users.where("name LIKE '%#{session[:name_s]}%'")
-    end
-    if session[:department_id_s].present?
-      @users = @users.where("department_id LIKE '#{session[:department_id_s]}'")
-    end
+    @users = search_obj
+ 
     render :index
   end
 
   def zen_search 
-    @users = User.page(params[:page])
-    session[:code_z] = params["search"]["code"]
-    session[:name_z] = params["search"]["name"]
-    session[:department_id_z] = params["search"]["department_id"]
-    if session[:code_z].present?
-      @users = @users.where("code LIKE '#{session[:code_z]}%'")
-    end
-    if session[:name_z].present?
-      @users = @users.where("name LIKE '%#{session[:name_z]}%'")
-    end
-    if session[:department_id_z].present?
-      @users = @users.where("department_id LIKE '#{session[:department_id_z]}'")
-    end
+    @users = search_obj
     render :zen_edit
   end
 
@@ -152,6 +137,25 @@ class UsersController < ApplicationController
       params.permit(users: [
         :code, :name, :password,
         :department_id, :system, :admin])[:users]
+    end
+
+    def search_obj
+      @users = User.page(params[:page])
+      if params["sw"] == "search"
+        session[:code_s] = params["search"].try(:fetch,"code")
+        session[:name_s] = params["search"].try(:fetch,"name")
+        session[:department_id_s] = params["search"].try(:fetch,"department_id")
+     end
+      if session[:code_s].present?
+        @users = @users.where("code LIKE '#{session[:code_s]}%'")
+      end
+      if session[:name_s].present?
+        @users = @users.where("name LIKE '%#{session[:name_s]}%'")
+      end
+      if session[:department_id_s].present?
+        @users = @users.where("department_id LIKE '#{session[:department_id_s]}'")
+      end
+      return @users
     end
 
     def auth
