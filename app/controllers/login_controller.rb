@@ -13,9 +13,17 @@ class LoginController < ApplicationController
       session[:admin] = usr.admin
     # redirect_to params[:referer]
       redirect_to controller: 'menu', action: 'index'
+    elsif :password == nil
+      flash.now[:referer] = params[:referer]
+      @error = 'パスワードを入力してください'
+      render 'index'
+    elsif :code == nil
+      flash.now[:referer] = params[:referer]
+      @error = 'ユーザーコードを入力してください'
+      render 'index'
     else
       flash.now[:referer] = params[:referer]
-      @error = 'ユーザー/パスワードを入力してください。'
+      @error = 'ユーザーコード/パスワードが間違っています'
       render 'index'
     end
   end

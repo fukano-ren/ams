@@ -28,7 +28,7 @@ class BelongsController < ApplicationController
 
     respond_to do |format|
       if @belong.save
-        format.html { redirect_to @belong, notice: 'Belong was successfully created.' }
+        format.html { redirect_to @belong, notice: '新しく登録しました' }
         format.json { render :show, status: :created, location: @belong }
       else
         format.html { render :new }
@@ -51,7 +51,7 @@ class BelongsController < ApplicationController
   def update
     respond_to do |format|
       if @belong.update(belong_params)
-        format.html { redirect_to @belong, notice: 'Belong was successfully updated.' }
+        format.html { redirect_to @belong, notice: '登録内容を更新しました' }
         format.json { render :show, status: :ok, location: @belong }
       else
         format.html { render :edit }
@@ -65,7 +65,7 @@ class BelongsController < ApplicationController
   def destroy
     @belong.soft_destroy
     respond_to do |format|
-      format.html { redirect_to belongs_url, notice: 'Belong was successfully destroyed.' }
+      format.html { redirect_to belongs_url, notice: '削除しました' }
       format.json { head :no_content }
     end
   end

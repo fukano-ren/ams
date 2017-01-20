@@ -1,13 +1,13 @@
 <% if session[:system] == true %>
 
   <p id="notice"><%= notice %></p>
-<p style="color : Black"><%= @error %></p>
+  <p style="color : Black"><%= @error %></p>
 
   <h1>ユーザー情報一覧</h1> 
 
-    <div align=right style="margin-top:-34px"><div style="margin-right:385px">
-      <%= link_to "ログアウト" , controller: :login, action: :index %>
-    </div></div>
+  <div align=right style="margin-top:-34px">
+    <%= link_to "ログアウト" , controller: :login, action: :index %>
+  </div>
 
   <p>&nbsp;</p>
 
@@ -15,16 +15,18 @@
     <table border="1">
       <tr>
         <th width="70" height="30" align="right" style="padding-right:15px ">コード</th>
-        <th style="padding-right:15px "><div style="padding-left:7px"><%= text_field_tag "search[code]" , session[:code_s] %></div></th>
+        <th style="padding-right:15px "><div style="padding-left:7px">
+          <%= text_field_tag "search[code]" , session[:code_s] %></div></th>
       </tr>
       <tr>
         <th width="70" height="30" align="right" style="padding-right:15px ">氏 名</th>
-        <th style="padding-right:15px"><div style="padding-left:7px"><%= text_field_tag "search[name]" , session[:name_s]%></div></th>
+        <th style="padding-right:15px"><div style="padding-left:7px">
+          <%= text_field_tag "search[name]" , session[:name_s]%></div></th>
       </tr> 
       <tr>
         <th width="70" height="30" align="right" style="padding-right:15px ">部 署</th>
-        <th align="left" style="padding-right:15px "><div style="padding-left:7px"><%= collection_select(
-        "search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></div></th>
+        <th align="left" style="padding-right:15px "><div style="padding-left:7px">
+          <%= collection_select("search", "department_id", Department.all, :id, :name, :prompt => "すべて" )%></div></th>
       </tr>
       <%= hidden_field_tag "sw" , "search" %>
     </table>
@@ -88,7 +90,8 @@
 
   <div style="margin-right:530px"><%= link_to '新規ユーザー登録', new_user_path %></div>
   <div align="center" style="margin-top:-17px"><%= link_to '一括変更', users_zen_edit_path %></div>
-  <div style="margin-left:540px"><div style="margin-top:-17px"><%= link_to 'メニューに戻る', menu_index_path %></div></div>
+  <div style="margin-left:540px"><div style="margin-top:-17px">
+    <%= link_to 'メニューに戻る', menu_index_path %></div></div>
 
 <% else %>
 
@@ -98,24 +101,27 @@
 
   <p>&nbsp;</p>
 
-    <div align=right style="margin-top:-34px"><div style="margin-right:385px">
-      <%= link_to "ログアウト" , controller: :login, action: :index %>
-    </div></div>
+  <div align=right style="margin-top:-34px"><div style="margin-right:385px">
+    <%= link_to "ログアウト" , controller: :login, action: :index %>
+  </div></div>
 
   <%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
     <table border="1">
       <tr>
         <th width="70" height="30" align="right" style="padding-right:15px ">コード</th>
-        <th style="padding-right:15px "><div style="padding-left:7px"><%= text_field_tag "search[code]" %></div></th>
+        <th style="padding-right:15px "><div style="padding-left:7px">
+          <%= text_field_tag "search[code]" %></div></th>
       </tr>
       <tr>
         <th width="70" height="30" align="right" style="padding-right:15px ">氏 名</th>
-        <th style="padding-right:15px"><div style="padding-left:7px"><%= text_field_tag "search[name]" %></div></th>
+        <th style="padding-right:15px"><div style="padding-left:7px">
+          <%= text_field_tag "search[name]" %></div></th>
       </tr> 
       <tr>
         <th width="70" height="30" align="right" style="padding-right:15px ">部 署</th>
-        <th align="left" style="padding-right:15px "><div style="padding-left:7px"><%= collection_select(
-        "search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></div></th>
+        <th align="left" style="padding-right:15px "><div style="padding-left:7px">
+          <%= collection_select(
+          "search", "department_id", Department.all, :id, :name, :prompt => "すべて") %></div></th>
       </tr>
     </table>
     <div style="margin-left:315px"><div style="margin-top:-22px"><%= submit_tag "検索" %></div></div>
@@ -141,7 +147,6 @@
         <th align=center width="120" height="30" colspan="3" bgcolor="#e6e6e6">アクション</th>
       </tr>
     </thead>
-
     <tbody>
       <% @users.each do |user| %>
         <% if user.name == session[:name] %>
@@ -167,6 +172,6 @@
 
   <p>&nbsp;</p>
 
-  <div align="center"><div style="margin-top:-17px"><%= link_to 'メニューに戻る', menu_index_path %></div></div>
-
+  <div align="center"><div style="margin-top:-17px">
+    <%= link_to 'メニューに戻る', menu_index_path %></div></div>
 <% end %>

@@ -100,7 +100,15 @@ class UsersController < ApplicationController
       @users = User.page(params[:page]) 
       @error = 'ログイン中のユーザーです'
       render :index
-    else  
+    elsif @user.admin == true && User.where(admin: true).count == 1 
+      @users = User.page(params[:page]) 
+      @error = '資産管理権限を持つユーザーがいなくなります'
+      render :index
+    elsif Belong.where(user_id: @user.id).count > 0
+      @users = User.page(params[:page]) 
+      @error = 'このユーザーは資産の主使用者です'
+      render :index
+    else
       @user.destroy
       respond_to do |format|
         format.html { redirect_to users_url, notice: '削除しました' }

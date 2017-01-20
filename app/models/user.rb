@@ -13,11 +13,20 @@ class User < ActiveRecord::Base
       return
     end
   end
- 
 
+  def system_nil
+    if User.where(system: true).count == 0
+      errors.add(user.system, "システム管理権限を持つユーザーがいなくなります")
+    end
+  end
 
+  def admin_nil
+    if User.where(admin: true).count == 0
+      errors.add(user.admin, "資産管理権限を持つユーザーがいなくなります")
+    end
+  end
 
-
+  validate  :system_nil, :admin_nil
   validates :password, presence: true
   validates :code, presence: true
   validates :name, presence: true
