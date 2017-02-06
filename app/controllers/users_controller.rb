@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :edit_password, :update_password]
-
+  skip_before_action :check_logined, only: [:new, :create]
 
   # GET /users
   # GET /users.json
